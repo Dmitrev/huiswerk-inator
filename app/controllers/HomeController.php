@@ -2,7 +2,13 @@
 
 class HomeController extends BaseController {
 
-
+	protected $homework;
+	
+	public function __construct( Homework $homework )
+	{
+		$this->homework = $homework;
+	}
+	
 	public function showHomework()
 	{
 		// If the user is not logged in, we want to force them to login.
@@ -12,7 +18,8 @@ class HomeController extends BaseController {
 		}
 		
 		return View::make('home')
-			->with('title', 'Inholland Huiswerk App');
+			->with('title', 'Inholland Huiswerk App')
+			->with('homework', $this->homework->with('subject')->closestToDeadline()->get());
 	}
 
 }
