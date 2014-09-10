@@ -11,23 +11,37 @@
 |
 */
 
-Route::get('/', [
-	'as' 	=> 'home',
-	'uses' 	=>'HomeController@showHomework'
-]);
+Route::group( ['before' => 'auth'] , function(){
+	
+	Route::get('/', [
+		'as' 	=> 'home',
+		'uses' 	=>'HomeController@showHomework'
+	]);
+	
+	
+	Route::get('logout', [
+		'as' 	=> 'logout',
+		'uses'	=> 'AuthController@logoutUser'
+	]);
+	
+	Route::get('homework/{id}', [
+		'as' => 'homework',
+		'uses' => 'HomeworkController@showItem'
+	]);
+});
 
-Route::get('login', [
-	'as' 	=> 'login',
-	'uses' 	=> 'AuthController@showLoginForm'
-]);
+Route::group( ['before' => 'guest'] , function(){
+	
+	
+	Route::get('login', [
+		'as' 	=> 'login',
+		'uses' 	=> 'AuthController@showLoginForm'
+	]);
+	
+	Route::post('login', [
+		'as' 	=> 'validate',
+		'uses' 	=> 'AuthController@submitLoginCredentials'
+	]);
 
-Route::post('login', [
-	'as' 	=> 'validate',
-	'uses' 	=> 'AuthController@submitLoginCredentials'
-]);
+});
 
-
-Route::get('logout', [
-	'as' 	=> 'logout',
-	'uses'	=> 'AuthController@logoutUser'
-]);
