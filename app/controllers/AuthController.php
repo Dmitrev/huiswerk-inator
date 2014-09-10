@@ -20,7 +20,7 @@ class AuthController extends BaseController {
                 ->with('error', Config::get('messages.auth.fail') );
         }
         
-        return 'logged in';
+        return Redirect::route('home');
     }
     
     public function logoutUser()
