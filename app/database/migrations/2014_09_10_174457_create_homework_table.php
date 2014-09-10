@@ -21,7 +21,7 @@ class CreateHomeworkTable extends Migration {
 			$table->integer('author')->unsigned();
 			$table->timestamp('deadline');
 			$table->boolean('is_cancelled');
-			$table->timestamp('moved_to');
+			$table->timestamp('moved_to')->nullable();
 			$table->timestamps();
 		});
 	}
