@@ -10,12 +10,14 @@ class AuthController extends BaseController {
     
     public function submitLoginCredentials()
     {
+        
         $credentials = Input::only(['username', 'password']);
         
         if( !Auth::attempt($credentials) )
-        { 
+        {
+            
             return Redirect::route('login')
-                ->with('error', Config::get('app.auth.fail') );
+                ->with('error', Config::get('messages.auth.fail') );
         }
         
         return 'logged in';
