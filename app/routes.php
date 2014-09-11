@@ -27,7 +27,7 @@ Route::group( ['before' => 'auth'] , function(){
 	Route::get('homework/{id}', [
 		'as' => 'homework',
 		'uses' => 'HomeworkController@showItem'
-	]);
+	])->where('id', '[0-9]+');
 });
 
 Route::group( ['before' => 'guest'] , function(){
