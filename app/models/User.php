@@ -7,7 +7,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Model implements UserInterface, RemindableInterface {
 	
-	protected static $rules = array(
+	public static $rules = array(
 		'fullname' => 'required',
 		'username' => 'required|alpha_dash|unique:users,username',
 

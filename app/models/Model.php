@@ -38,7 +38,6 @@ class Model extends Eloquent {
             }
         }
         
-        
         if( $v->passes() )
         {
             return true;
