@@ -6,7 +6,7 @@
     <h1>Homework</h1>
     
     @foreach( $homework as $item )
-        <p>{{{$item->title}}} ({{{$item->subject->name}}}) Deadline: {{$item->deadline}}</p>
+        <p><a href="{{URL::route('homework', [$item->id])}}">{{{$item->title}}}</a> ({{{$item->subject->name}}}) Deadline: {{$item->deadline}}</p>
     @endforeach
 @stop
 
