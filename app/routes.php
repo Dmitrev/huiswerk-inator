@@ -64,6 +64,15 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'AccountController@changeAccountPassword'
 	]);
 	
+	Route::get('account-security', [
+		'as' => 'account-security',
+		'uses' => 'AccountController@showSecurityAccountForm'
+	]);
+	
+	Route::post('account-security', [
+		'as' => 'change-account-security',
+		'uses' => 'AccountController@changeAccountSecurity'
+	]);
 	
 });
 

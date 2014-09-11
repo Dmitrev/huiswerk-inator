@@ -90,5 +90,42 @@ class AccountController extends BaseController {
         
     }
     
+    public function showSecurityAccountForm()
+    {
+        
+        return View::make( 'account-security' )
+            ->with('title', 'Beveiligingsvraag')
+            ->with('user', Auth::user() );
+    }
+    
+    public function changeAccountSecurity()
+    {
+        $rules = [
+                    'secret_question' => 'required',
+                    'secret_answer' => 'required'
+                ];
+        
+        $input = Input::only(['secret_question', 'secret_answer']);
+        
+        $v = Validator::make($input, $rules);
+        
+        
+        if( $v->passes() )
+        {
+            $user = $this->getCurrentUser();
+        
+            $user->secret_question = $input['secret_question'];
+            $user->secret_answer = Hash::make($input['secret_answer']);
+            $user->save();
+
+           return Redirect::route('account-security')
+                ->with('success', 'Wijzigingen zijn succesvol opgeslagen');
+        }
+        
+        return Redirect::route('account-security')
+                ->withInput()
+                ->withErrors($v->messages() );
+    }
+    
     
 }
