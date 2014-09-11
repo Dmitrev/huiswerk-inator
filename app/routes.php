@@ -28,6 +28,16 @@ Route::group( ['before' => 'auth'] , function(){
 		'as' => 'homework',
 		'uses' => 'HomeworkController@showItem'
 	])->where('id', '[0-9]+');
+	
+	Route::get('homework/add', [
+		'as' => 'add-homework',
+		'uses' => 'HomeworkController@showAddHomeworkForm'
+	]);
+	
+	Route::post('homework/add', [
+		'as' => 'create-homework',
+		'uses' => 'HomeworkController@createHomework'
+	]);
 });
 
 Route::group( ['before' => 'guest'] , function(){
