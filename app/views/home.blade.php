@@ -11,6 +11,8 @@
     @foreach( $homework as $item )
         <p><a href="{{URL::route('homework', [$item->id])}}">{{{$item->title}}}</a> ({{{$item->subject->name}}}) Deadline: {{$item->deadline}}</p>
     @endforeach
+    
+    {{$homework->links('pagination::simple')}}
 @stop
 
 

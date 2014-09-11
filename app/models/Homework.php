@@ -22,8 +22,7 @@ class Homework extends Model {
     public function scopeClosestToDeadline($query)
     {
         return $query->orderBy('deadline', 'ASC')
-            ->where('deadline', '>', Carbon::now())
-            ->take(5);
+            ->where('deadline', '>', Carbon::now());
     }
     
 }
