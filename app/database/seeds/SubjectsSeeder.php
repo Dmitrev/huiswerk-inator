@@ -17,7 +17,7 @@ class SubjectsSeeder extends Seeder {
             
             [
                 'name' => 'ICT trends',
-                'abbreviation' => 'ICT trends'
+                'abbreviation' => 'ICT'
             ]
         ];
         

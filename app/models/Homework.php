@@ -1,9 +1,10 @@
 <?php
 use Carbon\Carbon as Carbon;
-
+use Util\Str as Str;
 class Homework extends Model {
     
     protected $table = 'homework';
+    protected $appends = ['deadline_day', 'deadline_month', 'deadline_friendly'];
     
     protected static $rules = [
         'title' => 'required',
@@ -23,6 +24,31 @@ class Homework extends Model {
     {
         return $query->orderBy('deadline', 'ASC')
             ->where('deadline', '>', Carbon::now());
+    }
+    
+    private function getDate()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['deadline']);
+    }
+    
+    public function getDeadlineDayAttribute()
+    {
+       return $this->getDate()->day;
+    }
+    
+    public function getDeadlineMonthAttribute()
+    {
+        $month = $this->getDate()->month;
+        $str = new Str();
+        return $str->monthName($month, true);
+    }
+    
+    public function getDeadlineFriendlyAttribute()
+    {
+        $date = $this->getDate();
+        $str = new Str($date);
+        
+        return $str->objectToFriendlyDate();
     }
     
 }
