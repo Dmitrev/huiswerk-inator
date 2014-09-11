@@ -38,6 +38,8 @@ Route::group( ['before' => 'auth'] , function(){
 		'as' => 'create-homework',
 		'uses' => 'HomeworkController@createHomework'
 	]);
+	
+	
 });
 
 Route::group( ['before' => 'guest'] , function(){
@@ -51,6 +53,11 @@ Route::group( ['before' => 'guest'] , function(){
 	Route::post('login', [
 		'as' 	=> 'validate',
 		'uses' 	=> 'AuthController@submitLoginCredentials'
+	]);
+	
+	Route::get('register', [
+		'as' => 'create-account',
+		'uses' => 'RegisterController@showRegisterForm'
 	]);
 
 });

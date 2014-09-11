@@ -36,4 +36,7 @@
     </div>
 
     {{Form::close()}}
+    
+    <h2>Nog geen account?</h2>
+        <a class="btn btn-info" href="{{URL::route('create-account')}}">Account aanmaken</a>
 @stop
