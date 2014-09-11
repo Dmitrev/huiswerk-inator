@@ -55,3 +55,5 @@ Route::group( ['before' => 'guest'] , function(){
 
 });
 
+/* Custom validation */
+Validator::extend('valid_date', 'DateValidator@validDate');

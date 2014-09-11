@@ -31,6 +31,18 @@ class HomeworkController extends BaseController {
     
     public function createHomework()
     {
-        return 'add new';
+        $input = Input::only(['title', 'subject_id', 'content', 'deadline']);
+        
+        $homework = new Homework($input);
+
+        if( $homework->save() )
+        {
+            return Redirect::route('home')
+                ->with('success', 'Huiswerk toegevoegd');
+        }
+        
+        return Redirect::route('add-homework')
+            ->withInput()
+            ->withErrors( $homework->getErrors() );
     }
 }

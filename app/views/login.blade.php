@@ -2,9 +2,7 @@
 
 @section('content')
     
-    @if( Session::has('error') )
-        <p>{{ Session::get('error') }}</p>
-    @endif
+    @include('common.error')
     
     {{Form::open( ['route'=>'validate'])}}
         {{Form::text('username')}}

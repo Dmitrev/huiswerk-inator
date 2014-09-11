@@ -1,6 +1,7 @@
 <?php
-class Subject extends Eloquent {
+class Subject extends Model {
     protected $table = 'subjects';
+   
     
     public function scopeOrderd($query){
         $query->orderBy('name', 'ASC');
