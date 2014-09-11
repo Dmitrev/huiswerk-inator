@@ -6,6 +6,14 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Model implements UserInterface, RemindableInterface {
+	
+	protected static $rules = array(
+		'fullname' => 'required',
+		'username' => 'required|alpha_dash|unique:users,username',
+
+	);
+	protected $appends = ['password_confirmation'];
+	protected $fillable = array('fullname', 'username');
 
 	use UserTrait, RemindableTrait;
 

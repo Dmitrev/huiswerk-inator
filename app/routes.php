@@ -59,6 +59,11 @@ Route::group( ['before' => 'guest'] , function(){
 		'as' => 'create-account',
 		'uses' => 'RegisterController@showRegisterForm'
 	]);
+	
+	Route::post('register', [
+		'as' => 'store-account',
+		'uses' => 'RegisterController@storeNewAccount'
+	]);
 
 });
 

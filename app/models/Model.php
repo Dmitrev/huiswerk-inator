@@ -6,9 +6,12 @@ class Model extends Eloquent {
     protected static $rules = array();
     protected static $messages = array();
     protected $validator;
+    protected $table;
+    
     public function __construct(array $attributes = array(), Validator $validator = null )
     {
         parent::__construct($attributes);
+        
         $this->validator = $validator ?: App::make('validator');
         
         
@@ -25,6 +28,16 @@ class Model extends Eloquent {
     public function validate()
     {
         $v = $this->validator->make($this->attributes, static::$rules, static::$messages);
+       
+        // Unset all keys of unexisting columns
+        foreach($this->attributes as $key => $value)
+        {
+            if (!Schema::hasColumn( $this->table, $key))
+            {
+                unset($this->attributes[$key]);
+            }
+        }
+        
         
         if( $v->passes() )
         {
