@@ -54,9 +54,14 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'AccountController@saveGeneralAccountChanges'
 	]);
 	
-	Route::get('account/general', [
-		'as' => 'account-general',
-		'uses' => 'AccountController@showGeneralAccountForm'
+	Route::get('account/password', [
+		'as' => 'account-password',
+		'uses' => 'AccountController@showPasswordAccountForm'
+	]);
+	
+	Route::post('account/password', [
+		'as' => 'change-account-password',
+		'uses' => 'AccountController@changeAccountPassword'
 	]);
 	
 	

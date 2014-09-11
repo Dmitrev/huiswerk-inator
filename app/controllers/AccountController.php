@@ -24,6 +24,15 @@ class AccountController extends BaseController {
             ->with('user', Auth::user() );  
     }
     
+    private function getCurrentUser()
+    {
+        // Todo: Refacor
+        // Makes sure that the unique filter ignores the current user
+        User::$rules['username'] = 'required|alpha_dash|unique:users,username,'.Auth::user()->id;
+        
+        return $this->user->find( Auth::user()->id );
+    }
+    
     public function saveGeneralAccountChanges()
     {
         $input = Input::only([
@@ -31,14 +40,7 @@ class AccountController extends BaseController {
             'username'
         ]);
         
-        $user = $this->user->find( Auth::user()->id );
-        
-        // Todo: Refacor
-        // Makes sure that the unique filter ignores the current user
-        if( $input['username'] === $user->username )
-        {
-            User::$rules['username'] = 'required|alpha_dash|unique:users,username,'.$user->id;
-        }
+        $user = $this->getCurrentUser();
         
         $user->fullname = $input['fullname'];
         $user->username = $input['username'];
@@ -53,4 +55,40 @@ class AccountController extends BaseController {
             ->withInput()
             ->withErrors($user->getErrors());
     }
+    
+    public function showPasswordAccountForm()
+    {
+        return View::make('account-password')
+            ->with('title', 'Wachtwoord wijzigen');
+    }
+    
+    public function changeAccountPassword()
+    {
+        $input = Input::only(['old_password', 'password', 'password_confirmation']);
+        $user = $this->getCurrentUser();
+        
+        if( !Hash::check($input['old_password'], $user->password) )
+        {
+            return Redirect::route('account-password')
+                ->with('error', 'Huidige wachtwoord is onjuist');
+        }
+        
+        $rules = [ 'password' => 'required|confirmed' ];
+        $v = Validator::make($input, $rules);
+        
+        if ( $v->passes() )
+        {
+            $user->password = Hash::make( $input['password'] );
+            $user->save();
+            
+             return Redirect::route('account-password')
+                ->with('success', 'Wachtwoord is succesvol gewijzigd');
+        }
+        
+        return Redirect::route('account-password')
+                ->withErrors($v->messages() );
+        
+    }
+    
+    
 }
