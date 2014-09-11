@@ -2,7 +2,7 @@
 
 @section('content')
     <p>Ingelogd als {{ Auth::user()->fullname }}, <a href="{{URL::route('logout') }}">uitloggen</a></p>
-    
+    <p><a href="{{URL::route('account')}}" class="btn btn-default">Mijn account</a></p>
     @include('common.success')
     
     <h1>Huiswerk</h1>

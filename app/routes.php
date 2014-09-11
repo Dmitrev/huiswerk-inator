@@ -39,6 +39,11 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'HomeworkController@createHomework'
 	]);
 	
+	Route::get('account', [
+		'as' => 'account',
+		'uses' => 'AccountController@mainView'
+	]);
+	
 	Route::get('account/general', [
 		'as' => 'account-general',
 		'uses' => 'AccountController@showGeneralAccountForm'
@@ -47,6 +52,11 @@ Route::group( ['before' => 'auth'] , function(){
 	Route::post('account/general', [
 		'as' => 'save-general-account-settings',
 		'uses' => 'AccountController@saveGeneralAccountChanges'
+	]);
+	
+	Route::get('account/general', [
+		'as' => 'account-general',
+		'uses' => 'AccountController@showGeneralAccountForm'
 	]);
 	
 	

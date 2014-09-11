@@ -1,6 +1,7 @@
 @extends('templates.default')
 
 @section('content')
+    @include('common.back-account')
     <h1>Mijn account</h1>
     @include('common.success')
     @include('common.error')

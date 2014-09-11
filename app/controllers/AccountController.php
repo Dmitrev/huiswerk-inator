@@ -10,11 +10,17 @@ class AccountController extends BaseController {
         $this->user = $user;
     }
     
+    public function mainView()
+    {
+        return View::make('account')
+            ->with('title', 'Mijn account');
+    }
+    
     public function showGeneralAccountForm()
     {
         
         return View::make('account-general')
-            ->with('title', 'Mijn account')
+            ->with('title', 'Algemeen')
             ->with('user', Auth::user() );  
     }
     
