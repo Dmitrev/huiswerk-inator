@@ -11,9 +11,14 @@ class HomeController extends BaseController {
 	
 	public function showHomework()
 	{
+		$homework = $this->homework
+		->with('subject')
+		->closestToDeadline()
+		->paginate(5);
+		
 		return View::make('home')
 			->with('title', 'Inholland Huiswerk App')
-			->with('homework', $this->homework->with('subject')->closestToDeadline()->paginate(5));
+			->with('homework', $homework);
 	}
 
 }
