@@ -1,6 +1,6 @@
 <?php
 use Carbon\Carbon as Carbon;
-use Util\Str as Str;
+use Util\Str;
 class Homework extends Model {
     
     protected $table = 'homework';

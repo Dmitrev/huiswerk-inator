@@ -20,12 +20,13 @@
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
+			"app/tests",
 			"app/validators"
 			
 		],
 		
 		"psr-4": {
-			 "Util\\": "app/lib" 
+			 "Util\\": "app/lib/Util" 
 		}
 		
 	},
