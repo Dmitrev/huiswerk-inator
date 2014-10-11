@@ -6,12 +6,12 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*"
-		
+
 	},
-	
+
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*",
-		"mockery/mockery": "0.7.*"	
+		"mockery/mockery": "0.7.*"
 	},
 	"autoload": {
 		"classmap": [
@@ -22,13 +22,14 @@
 			"app/database/seeds",
 			"app/tests",
 			"app/validators"
-			
+
 		],
-		
+
 		"psr-4": {
-			 "Util\\": "app/lib/Util" 
+			 "Util\\": "app/lib/Util",
+				"Guard\\": "app/lib/Guard"
 		}
-		
+
 	},
 	"scripts": {
 		"post-install-cmd": [
