@@ -4,9 +4,10 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Guard\GroupManager;
 
 class User extends Model implements UserInterface, RemindableInterface {
-	
+
 	public static $rules = array(
 		'fullname' => 'required',
 		'username' => 'required|alpha_dash|unique:users,username',
@@ -30,5 +31,14 @@ class User extends Model implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
+
+	public function has($permission = null){
+		$group = new GroupManager($this);
+		return $group->has($permission);
+	}
+
+	public function group(){
+		return new GroupManager($this);
+	}
 
 }

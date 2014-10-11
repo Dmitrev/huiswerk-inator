@@ -101,5 +101,11 @@ Route::group( ['before' => 'guest'] , function(){
 
 });
 
+Route::get('test', function(){
+		Auth::login( User::first() );
+
+		dd( Auth::user()->has('admin') );
+});
+
 /* Custom validation */
 Validator::extend('valid_date', 'DateValidator@validDate');
