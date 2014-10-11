@@ -11,12 +11,12 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		
+
 		$this->call('SubjectsSeeder');
-		
+
 		// Testing
 		$this->call('TestAccountSeeder');
-		$this->call('HomeworkSeeder');
+		//$this->call('HomeworkSeeder');
 	}
 
 }
