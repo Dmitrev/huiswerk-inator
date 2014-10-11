@@ -54,6 +54,15 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('admin', function(){
+
+	if( Auth::guest() || !Auth::user()->has('admin') )
+	{
+			return Response::make('Forbidden', 403);
+	}
+
+} );
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

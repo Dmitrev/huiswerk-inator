@@ -101,5 +101,18 @@ Route::group( ['before' => 'guest'] , function(){
 
 });
 
+Route::group([
+		'prefix' => 'admin',
+		'before' => 'admin',
+		'namespace' => 'Admin']
+		, function(){
+
+	Route::get('/', [
+			'as' => 'admin-dashboard',
+			'uses' => 'DashboardController@view'
+		]);
+
+});
+
 /* Custom validation */
 Validator::extend('valid_date', 'DateValidator@validDate');
