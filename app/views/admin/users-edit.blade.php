@@ -1,6 +1,7 @@
 @extends('templates.admin')
 
 @section('content')
+  @include('common.back-admin-view-user')
   <h1>Gebruiker {{$user->username}} aanpassen</h1>
 
   @if( $errors->any() )

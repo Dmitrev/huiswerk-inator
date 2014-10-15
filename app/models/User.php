@@ -48,7 +48,7 @@ class User extends Model implements UserInterface, RemindableInterface {
 
 	public function scopeUserList($query)
 	{
-			$list = $query->select(['fullname', 'username', 'group'])
+			$list = $query->select(['id', 'fullname', 'username', 'group'])
 				;
 
 			# Filter results if search query is used

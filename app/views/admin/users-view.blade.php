@@ -46,8 +46,16 @@
     <tbody>
   @foreach( $users as $user)
       <tr>
-        <td>{{$user->fullname}}</td>
-        <td>{{$user->username}}</td>
+        <td>
+          <a href="{{URL::route('admin-users.show', [$user->id] )}}">
+            {{$user->fullname}}
+          </a>
+        </td>
+        <td>
+          <a href="{{URL::route('admin-users.show', [$user->id] )}}">
+            {{$user->username}}
+          </a>
+        </td>
         <td>{{$user->userGroup->getName()}}</td>
       </tr>
   @endforeach
