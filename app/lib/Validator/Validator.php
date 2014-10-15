@@ -7,7 +7,7 @@ class Validator{
   protected $messages = [];
   protected $Validator;
   protected $input = [];
-
+  protected $entry = null;
   protected $validation;
 
   public function __construct( $input )
@@ -51,4 +51,8 @@ class Validator{
     return $this->input[$key];
   }
 
+  public function entry()
+  {
+    return $this->entry;
+  }
 }
