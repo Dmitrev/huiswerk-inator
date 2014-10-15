@@ -1,6 +1,7 @@
 <?php
 use Validator\GeneralAccountSettings;
 use Validator\PasswordChange;
+use Validator\AccountSecurity;
 
 class AccountController extends BaseController {
 
@@ -93,23 +94,15 @@ class AccountController extends BaseController {
 
     public function changeAccountSecurity()
     {
-        $rules = [
-                    'secret_question' => 'required',
-                    'secret_answer' => 'required'
-                ];
 
         $input = Input::only(['secret_question', 'secret_answer']);
 
-        $v = Validator::make($input, $rules);
+        $user = new AccountSecurity($input);
 
 
-        if( $v->passes() )
+        if( $user->passes() )
         {
-            $user = $this->getCurrentUser();
-
-            $user->secret_question = $input['secret_question'];
-            $user->secret_answer = Hash::make($input['secret_answer']);
-            $user->save();
+            $user->save(Auth::user()->id);
 
            return Redirect::route('account-security')
                 ->with('success', 'Wijzigingen zijn succesvol opgeslagen');
@@ -117,7 +110,7 @@ class AccountController extends BaseController {
 
         return Redirect::route('account-security')
                 ->withInput()
-                ->withErrors($v->messages() );
+                ->withErrors($user->errors() );
     }
 
 

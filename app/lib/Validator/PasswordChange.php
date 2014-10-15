@@ -1,4 +1,5 @@
 <?php namespace Validator;
+use User, Hash;
 class PasswordChange extends Validator{
 
   protected $rules = [
