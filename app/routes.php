@@ -127,7 +127,7 @@ Route::group([
 				'uses' => 'UsersController@save'
 		]);
 
-		Route::get('users/{search?}', [
+		Route::get('users', [
 			'as' => 'admin-users.view',
 			'uses' => 'UsersController@view'
 		]);

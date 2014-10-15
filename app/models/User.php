@@ -48,9 +48,19 @@ class User extends Model implements UserInterface, RemindableInterface {
 
 	public function scopeUserList($query)
 	{
-		return $query->select(['fullname', 'username', 'group'])
-			->orderBy('fullname')
-			->paginate(15);
+			$list = $query->select(['fullname', 'username', 'group'])
+				;
+
+			# Filter results if search query is used
+			if( Input::has('q') )
+			{
+				$q = Input::get('q');
+
+				$list = $list->where('username', 'LIKE', "%$q%")
+					->orWhere('fullname', 'LIKE', "%$q%");
+			}
+
+			return $list->orderBy('fullname')->paginate(15);
 	}
 
 }

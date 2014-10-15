@@ -12,7 +12,7 @@ class UsersController extends \BaseController{
     $this->user = $user;
   }
 
-  public function view($query = null)
+  public function view()
   {
     /* Get the users */
     $users = $this->user->userList();
