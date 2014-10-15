@@ -1,8 +1,11 @@
 @extends('templates.admin')
 
 @section('content')
-
-
+@if(Session::has('deleted_user'))
+  @include('common.success', ['message' => 'Sucessfully deleted user <strong>'.Session::get('deleted_user').'</strong>'])
+@else
+  @include('common.success')
+@endif
   @if( Input::has('q'))
     <h1>Zoekresulaten voor '{{Input::get('q')}}'</h1>
 

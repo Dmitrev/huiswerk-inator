@@ -2,6 +2,9 @@
 
 @section('content')
   @include('common.back-admin-view-user')
+  <a @if( $user->id === Auth::user()->id ) disabled @endif href="{{URL::route('admin-users.confirm-delete', [$user->id])}}" class="btn btn-danger">
+    Verwijderen
+  </a>
   <h1>Gebruiker {{$user->username}} aanpassen</h1>
 
   @if( $errors->any() )

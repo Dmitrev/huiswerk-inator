@@ -1,6 +1,6 @@
 <?php namespace Admin;
 
-use User, Input, View, Redirect, Validator\AdminUserEditValidator;
+use User, Input, View, Auth, Redirect, Validator\AdminUserEditValidator;
 
 
 class UsersController extends \BaseController{
@@ -58,5 +58,35 @@ class UsersController extends \BaseController{
 
     return Redirect::back()->with('success', 'updated');
 
+  }
+
+  public function confirmDelete($id)
+  {
+    $user = User::findOrFail($id);
+
+    return View::make('admin.users-confirm-delete')
+      ->with('title', 'Bevestig verwijderen van '.$user->username)
+      ->with('user', $user);
+  }
+
+  public function delete()
+  {
+    $id = Input::get('user_id');
+    $user = User::findOrFail($id);
+
+    # User tries to delete his own accounts
+    if($user->id === Auth::user()->id){
+      return View::make('admin.errors.delete-own-account')
+        ->with('title', 'Error');
+    }
+
+    # Cache username to use it in message
+    $u = $user->username;
+
+    $user->delete();
+
+    return Redirect::route('admin-users.view')
+      ->with('deleted_user', $u)
+      ->with('success', true);
   }
 }

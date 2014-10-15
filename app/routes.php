@@ -108,6 +108,16 @@ Route::group([
 			'uses' => 'DashboardController@view'
 		]);
 
+		Route::post('users/delete', [
+			'as' => 'admin-users.delete',
+			'uses' => 'UsersController@delete'
+		]);
+
+		Route::get('users/confirm-delete/{id}',[
+			'as' => 'admin-users.confirm-delete',
+			'uses' => 'UsersController@confirmDelete',
+		]);
+
 		Route::get('users/show/{id}', [
 				'as' => 'admin-users.show',
 				'uses' => 'UsersController@show'
