@@ -37,18 +37,18 @@ class User extends Model implements UserInterface, RemindableInterface {
 		return $group->has($permission);
 	}
 
-	public function group(){
+	public function getGroup(){
 		return new GroupManager($this);
 	}
 
 	public function getUserGroupAttribute()
 	{
-		return $this->group();
+		return $this->getGroup();
 	}
 
 	public function scopeUserList($query)
 	{
-		return $query->select(['fullname', 'username'])
+		return $query->select(['fullname', 'username', 'group'])
 			->orderBy('fullname')
 			->paginate(15);
 	}
