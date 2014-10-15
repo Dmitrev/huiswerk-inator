@@ -1,15 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+# Custom validation rules
+require app_path().'/validators.php';
+
+# Custom patterns
+require app_path().'/patterns.php';
+
 
 Route::group( ['before' => 'auth'] , function(){
 
@@ -27,7 +23,7 @@ Route::group( ['before' => 'auth'] , function(){
 	Route::get('homework/{id}', [
 		'as' => 'homework',
 		'uses' => 'HomeworkController@showItem'
-	])->where('id', '[0-9]+');
+	]);
 
 	Route::get('homework/add', [
 		'as' => 'add-homework',
@@ -115,12 +111,12 @@ Route::group([
 		Route::get('users/show/{id}', [
 				'as' => 'admin-users.show',
 				'uses' => 'UsersController@show'
-			])->where('id', '[0-9]+');
+			]);
 
 		Route::get('users/edit/{id}', [
 				'as' => 'admin-users.edit',
 				'uses' => 'UsersController@edit'
-			])->where('id', '[0-9]+');
+			]);
 
 		Route::post('users/edit', [
 				'as' => 'admin-users.save',
@@ -134,7 +130,3 @@ Route::group([
 
 
 });
-
-/* Custom validation */
-Validator::extend('valid_date', 'DateValidator@validDate');
-Validator::extend('password_check', 'PasswordValidator@passwordCheck');
