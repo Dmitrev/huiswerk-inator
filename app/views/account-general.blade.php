@@ -12,14 +12,19 @@
             {{Form::label('fullname', 'Volledige naam: ')}}
             {{Form::text('fullname', Input::old('fullname', $user->fullname), ['class' => 'form-control'])}}
         </div>
-            
+
         <div class="form-group">
-            {{Form::label('username', 'Gebruikersnaam: ')}}
-            {{Form::text('username', Input::old('username', $user->username), ['class' => 'form-control'])}}
+            {{Form::label('cur_username', 'Gebruikersnaam: ')}}
+            <p class="form-control-static">{{$user->username}}</p>
         </div>
-      
+
         <div class="form-group">
-            
+            {{Form::label('username', 'Nieuwe Gebruikersnaam: ')}}
+            {{Form::text('username', Input::old('username'), ['class' => 'form-control'])}}
+        </div>
+
+        <div class="form-group">
+
             {{Form::submit('Opslaan', ['class' => 'btn btn-success'])}}
         </div>
     {{ Form::close() }}
