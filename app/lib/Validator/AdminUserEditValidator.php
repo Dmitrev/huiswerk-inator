@@ -5,7 +5,7 @@ class AdminUserEditValidator extends Validator{
   protected $rules = [
     'fullname' => 'required',
     'username' => 'unique:users,username|alpha_dash|min:3|max:15',
-    'password' => 'min:6|confirmed',
+    'password' => 'min:3|confirmed',
   ];
 
   public function save($id = NULL)
@@ -19,7 +19,7 @@ class AdminUserEditValidator extends Validator{
 
     if( $this->has( 'password' ) )
       $user->password = Hash::make( $this->get('password') );
-      
+
     $user->save();
 
     return true;
