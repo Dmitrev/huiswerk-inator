@@ -16,6 +16,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Dashboard</a></li>
         <li><a href="#">Gebruikers</a></li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

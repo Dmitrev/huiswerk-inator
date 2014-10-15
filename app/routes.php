@@ -112,6 +112,27 @@ Route::group([
 			'uses' => 'DashboardController@view'
 		]);
 
+		Route::get('users/show/{id}', [
+				'as' => 'admin-users.show',
+				'uses' => 'UsersController@show'
+			])->where('id', '[0-9]+');
+
+		Route::get('users/edit/{id}', [
+				'as' => 'admin-users.edit',
+				'uses' => 'UsersController@edit'
+			])->where('id', '[0-9]+');
+
+		Route::post('users/edit', [
+				'as' => 'admin-users.save',
+				'uses' => 'UsersController@save'
+		]);
+
+		Route::get('users/{search?}', [
+			'as' => 'admin-users.view',
+			'uses' => 'UsersController@view'
+		]);
+
+
 });
 
 /* Custom validation */

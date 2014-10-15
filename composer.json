@@ -26,8 +26,9 @@
 		],
 
 		"psr-4": {
-			 "Util\\": "app/lib/Util",
-				"Guard\\": "app/lib/Guard"
+			"Util\\": "app/lib/Util",
+			"Guard\\": "app/lib/Guard",
+			"Validator\\": "app/lib/Validator"
 		}
 
 	},

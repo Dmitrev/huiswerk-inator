@@ -13,7 +13,7 @@ class User extends Model implements UserInterface, RemindableInterface {
 		'username' => 'required|alpha_dash|unique:users,username',
 
 	);
-	protected $appends = ['password_confirmation'];
+	protected $appends = ['password_confirmation', 'userGroup'];
 	protected $fillable = array('fullname', 'username');
 
 	use UserTrait, RemindableTrait;
@@ -39,6 +39,18 @@ class User extends Model implements UserInterface, RemindableInterface {
 
 	public function group(){
 		return new GroupManager($this);
+	}
+
+	public function getUserGroupAttribute()
+	{
+		return $this->group();
+	}
+
+	public function scopeUserList($query)
+	{
+		return $query->select(['fullname', 'username'])
+			->orderBy('fullname')
+			->paginate(15);
 	}
 
 }
