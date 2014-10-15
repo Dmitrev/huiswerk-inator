@@ -37,14 +37,10 @@ class Validator{
     return $this->validation->messages();
   }
 
-  public function save()
-  {
-    // Write data to database
-  }
-
   protected function has($key)
   {
-      return array_key_exists($key, $this->input);
+      return array_key_exists($key, $this->input)
+              && !empty($this->input[$key]);
   }
 
   public function get($key)
