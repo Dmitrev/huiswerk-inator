@@ -73,6 +73,11 @@ return array(
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
 
+	/* Custom validation messages */
+	"valid_date" => "The :attribute cannot be in the weekend or in the past",
+	"password_check" => "The :attribute field must equal your current password",
+
+
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Language Lines

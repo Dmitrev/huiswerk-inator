@@ -1,5 +1,6 @@
 <?php
 use Validator\GeneralAccountSettings;
+use Validator\PasswordChange;
 
 class AccountController extends BaseController {
 
@@ -66,28 +67,19 @@ class AccountController extends BaseController {
     public function changeAccountPassword()
     {
         $input = Input::only(['old_password', 'password', 'password_confirmation']);
-        $user = $this->getCurrentUser();
 
-        if( !Hash::check($input['old_password'], $user->password) )
+        $user = new PasswordChange($input);
+
+        if ( $user->passes() )
         {
+            $user->save( Auth::user()->id );
+
             return Redirect::route('account-password')
-                ->with('error', 'Huidige wachtwoord is onjuist');
-        }
-
-        $rules = [ 'password' => 'required|confirmed' ];
-        $v = Validator::make($input, $rules);
-
-        if ( $v->passes() )
-        {
-            $user->password = Hash::make( $input['password'] );
-            $user->save();
-
-             return Redirect::route('account-password')
                 ->with('success', 'Wachtwoord is succesvol gewijzigd');
         }
 
         return Redirect::route('account-password')
-                ->withErrors($v->messages() );
+                ->withErrors($user->errors() );
 
     }
 
