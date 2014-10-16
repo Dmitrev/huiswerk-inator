@@ -15,9 +15,12 @@ class HomeworkController extends BaseController {
     public function showItem( $homeworkId )
     {
         $homework = $this->homework->with('subject')->findOrFail($homeworkId);
+        $comments = Comment::getComments($homeworkId);
+
         return View::make('homework')
             ->with('title', $homework->title)
-            ->with('item', $homework);
+            ->with('item', $homework)
+            ->with('comments', $comments);
     }
 
     public function showAddHomeworkForm()

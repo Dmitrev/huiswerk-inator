@@ -8,7 +8,9 @@
         <li><span class="label label-danger">{{$item->deadline_friendly}}</span></li>
     </ul>
     <h2>Beschrijving</h2>
-    <p>{{$item->content}}</p>
+    <div class="well">
+      <p>{{$item->content}}</p>
+    </div>
 
     @include('common.comments')
 @stop

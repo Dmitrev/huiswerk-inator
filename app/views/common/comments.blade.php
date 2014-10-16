@@ -2,7 +2,7 @@
 <div id="comments">
   @include('common.error')
   @include('common.success')
-  <h2>Reacties</h2>
+
   {{Form::open(['route' => 'new-comment'])}}
   <div class="form-group">
     {{Form::label('comment', 'Reactie:')}}
@@ -17,8 +17,16 @@
     {{Form::submit('Reactie plaatsen', ['class' => 'btn btn-primary btn-block'])}}
   </div>
   {{Form::close()}}
+  <h2>Reacties</h2>
   @if(isset($comments))
-
+    @foreach($comments as $comment)
+      <strong>{{$comment->user->fullname}}</strong>
+      <div id="comment-{{$comment->id}}" class="panel panel-default">
+        <div class="panel-body">
+          {{$comment->body}}
+        </div>
+      </div>
+    @endforeach
   @endif
 </div>
 @endif
