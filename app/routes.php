@@ -156,5 +156,13 @@ Route::group([
 			'uses' => 'HomeworkController@show'
 		]);
 
+		Route::get('homework/edit/{id}', [
+			'as' => 'admin-homework.edit',
+			'uses' => 'HomeworkController@edit'
+		]);
 
+		Route::post('homework/edit', [
+			'as' => 'admin-homework.save',
+			'uses' => 'HomeworkController@save'
+		]);
 });

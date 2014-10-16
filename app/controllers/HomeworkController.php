@@ -25,9 +25,7 @@ class HomeworkController extends BaseController {
 
     public function showAddHomeworkForm()
     {
-        $subjects = $this->subject
-                ->orderd()
-                ->lists('name', 'id');
+        $subjects = $this->subject->options();
 
         return View::make('add-homework')
             ->with('title', 'Huiswerk toevoegen')

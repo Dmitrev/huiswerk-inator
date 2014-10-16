@@ -7,4 +7,11 @@ class Subject extends Model {
       return  $query->orderBy('name', 'ASC');
 
     }
+
+    public function scopeOptions($query)
+    {
+      return $query
+              ->orderd()
+              ->lists('name', 'id');
+    }
 }

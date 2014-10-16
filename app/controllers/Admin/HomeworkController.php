@@ -1,5 +1,5 @@
 <?php namespace Admin;
-use View, Homework;
+use View, Homework, Input, Redirect, Subject, Validator\AdminEditHomework;
 
 class HomeworkController extends \BaseController{
 
@@ -18,7 +18,33 @@ class HomeworkController extends \BaseController{
     $homework = Homework::findOrFail($id);
 
     return View::make('admin.homework-show')
-      ->with('title', 'Item bekijken')
+      ->with('title', $homework->title.' Bekijken')
       ->with('homework', $homework);
+  }
+
+  public function edit($id){
+    $homework = Homework::findOrFail($id);
+    $subjects = Subject::options();
+
+    return View::make('admin.homework-edit')
+      ->with('title', $homework->title.' bewerken')
+      ->with('homework', $homework)
+      ->with('subjects', $subjects);
+  }
+
+  public function save()
+  {
+
+    $v = new AdminEditHomework( Input::all() );
+
+    if( $v->fails() )
+    {
+      return Redirect::back()
+        ->withInput()
+        ->withErrors( $v->errors() );
+    }
+    $v->save();
+    return Redirect::back()
+      ->with('success', 'Wijzigingen successvol opgeslagen');
   }
 }

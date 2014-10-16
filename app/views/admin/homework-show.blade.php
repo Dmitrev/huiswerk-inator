@@ -10,6 +10,7 @@
     <dd>{{$homework->deadline_friendly}}</dd>
   </dl>
 
-
-
+  <p>
+    <a href="{{URL::route('admin-homework.edit', [$homework->id])}}" class="btn btn-default">Bewerken</a>
+  </p>
 @stop
