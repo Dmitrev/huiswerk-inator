@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-    
+
     @include('common.back')
     <h1>Huiswerk toevoegen</h1>
     @include('common.error')
@@ -12,17 +12,21 @@
         </div>
         <div class="form-group">
         {{Form::label('subject_id', 'Vak: ')}}
-            {{Form::select('subject_id', $subjects, Input::old('subject_id'), ['class' => 'form-control'] )}}  
-        </div>    
+            {{Form::select('subject_id', $subjects, Input::old('subject_id'), ['class' => 'form-control'] )}}
+        </div>
         <div class="form-group">
             {{Form::label('content', 'Beschrijving: ')}}
             {{Form::textarea('content', Input::old('content'), ['class' => 'form-control', 'placeholder' => 'content'])}}
         </div>
         <div class="form-group">
             {{Form::label('deadline', 'Deadline: ')}}
-            {{Form::text('deadline', Input::old('deadline'), ['class' => 'form-control', 'placeholder' => 'deadline'])}}
+            {{Form::text('deadline', null, [
+              'class' => 'form-control datepicker',
+              'data-value' => Input::old('deadline'),
+              'placeholder' => 'Raak dit veld aan om een datum te kiezen'
+            ])}}
         </div>
-        <div class="form-group text-right">    
+        <div class="form-group text-right">
             {{Form::submit('Toevoegen', ['class' => 'btn btn-success'])}}
         </div>
     {{Form::close()}}

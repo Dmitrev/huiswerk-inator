@@ -34,7 +34,7 @@ class HomeworkController extends BaseController {
 
     public function createHomework()
     {
-        $input = Input::only(['title', 'subject_id', 'content', 'deadline']);
+        $input = Input::only(['title', 'subject_id', 'content', 'deadline_submit']);
 
         $homework = new AddHomeWork($input);
 
