@@ -114,6 +114,7 @@ Route::group([
 			'uses' => 'DashboardController@view'
 		]);
 
+
 		Route::post('users/delete', [
 			'as' => 'admin-users.delete',
 			'uses' => 'UsersController@delete'
@@ -142,6 +143,12 @@ Route::group([
 		Route::get('users', [
 			'as' => 'admin-users.view',
 			'uses' => 'UsersController@view'
+		]);
+
+
+		Route::get('homework', [
+			'as' => 'admin-homework.view',
+			'uses' => 'HomeworkController@view'
 		]);
 
 

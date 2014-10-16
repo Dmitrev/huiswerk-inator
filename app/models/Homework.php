@@ -46,4 +46,11 @@ class Homework extends Model {
         return $str->objectToFriendlyDate();
     }
 
+    public function scopeGetList($query)
+    {
+      return $query->with('subject')
+        ->orderBy('created_at', 'DESC')
+        ->paginate(15);
+    }
+
 }
