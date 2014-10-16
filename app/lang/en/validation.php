@@ -74,7 +74,7 @@ return array(
 	"timezone"             => "The :attribute must be a valid zone.",
 
 	/* Custom validation messages */
-	"valid_date" => "The :attribute cannot be in the weekend or in the past",
+	"valid_date" => "The :attribute is invalid, it must be a valid date and also not in the weekend or in the past",
 	"password_check" => "The :attribute field must equal your current password",
 
 
