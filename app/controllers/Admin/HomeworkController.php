@@ -12,4 +12,13 @@ class HomeworkController extends \BaseController{
       ->with('homework', $homework);
 
   }
+
+  public function show($id)
+  {
+    $homework = Homework::findOrFail($id);
+
+    return View::make('admin.homework-show')
+      ->with('title', 'Item bekijken')
+      ->with('homework', $homework);
+  }
 }

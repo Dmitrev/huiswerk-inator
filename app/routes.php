@@ -151,5 +151,10 @@ Route::group([
 			'uses' => 'HomeworkController@view'
 		]);
 
+		Route::get('homework/show/{id}', [
+			'as' => 'admin-homework.show',
+			'uses' => 'HomeworkController@show'
+		]);
+
 
 });
