@@ -70,6 +70,12 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'AccountController@changeAccountSecurity'
 	]);
 
+
+	Route::post('comment', [
+			'as' => 'new-comment',
+			'uses' => 'CommentsController@post'
+	]);
+
 });
 
 Route::group( ['before' => 'guest'] , function(){

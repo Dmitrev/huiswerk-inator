@@ -9,4 +9,6 @@
     </ul>
     <h2>Beschrijving</h2>
     <p>{{$item->content}}</p>
+
+    @include('common.comments')
 @stop
