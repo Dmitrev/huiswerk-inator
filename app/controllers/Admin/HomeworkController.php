@@ -1,8 +1,8 @@
 <?php namespace Admin;
 use View, Homework, Input, Redirect, Subject, Validator\AdminEditHomework;
 
-class HomeworkController extends \BaseController{
-
+class HomeworkController extends BaseController{
+  protected $active_nav = 'homework';
   public function view()
   {
 

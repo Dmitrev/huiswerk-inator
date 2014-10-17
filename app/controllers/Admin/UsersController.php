@@ -3,12 +3,13 @@
 use User, Input, View, Auth, Redirect, Validator\AdminUserEditValidator;
 
 
-class UsersController extends \BaseController{
-
+class UsersController extends BaseController{
+  protected $active_nav = 'users';
   private $user;
 
   public function __construct( User $user )
   {
+    parent::__construct();
     $this->user = $user;
   }
 

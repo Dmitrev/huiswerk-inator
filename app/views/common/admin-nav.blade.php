@@ -14,8 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Gebruikers</a></li>
+        @foreach($nav as $item)
+          <li @if($item['active']) class="active" @endif><a href="{{URL::route($item['route'])}}">{{$item['value']}}</a></li>
+        @endforeach
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

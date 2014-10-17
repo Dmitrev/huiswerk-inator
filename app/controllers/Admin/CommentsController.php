@@ -2,7 +2,8 @@
 
 use Comment, Input, Redirect, View, Validator\AdminEditComment;
 
-class CommentsController extends \BaseController{
+class CommentsController extends BaseController{
+  protected $active_nav = 'comments';
 
   public function view()
   {
