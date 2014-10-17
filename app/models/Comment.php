@@ -15,4 +15,16 @@ class Comment extends Model{
   {
     return $this->belongsTo('User', 'user_id', 'id');
   }
+
+  public function homework()
+  {
+    return $this->belongsTo('Homework', 'homework_id', 'id');
+  }
+
+  public function scopeGetList($query)
+  {
+    return $query->with(['user', 'homework'])
+      ->orderBy('created_at', 'DESC')
+      ->paginate(15);
+  }
 }
