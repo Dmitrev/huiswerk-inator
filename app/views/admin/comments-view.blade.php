@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>Lijst met alle comments</h1>
-
+  @include('common.success')
   <table class="table table-striped">
     <thead>
       <tr>

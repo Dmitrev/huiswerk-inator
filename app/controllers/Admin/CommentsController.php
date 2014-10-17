@@ -48,4 +48,23 @@ class CommentsController extends \BaseController{
       ->withInput()
       ->with('success', 'Wijzigingen succesvol opgeslagen');
   }
+
+  public function confirmDelete($id)
+  {
+    $comment = Comment::getId($id);
+
+    return View::make('admin.comments-confirm-delete')
+      ->with('title', 'Bevistig verwijdering')
+      ->with('comment', $comment);
+  }
+
+  public function delete()
+  {
+    $comment = Comment::findOrFail( Input::get('comment_id') );
+    $comment->delete();
+
+    return Redirect::route('admin-comments.view')
+      ->with('success', 'Reactie is successvol verwijderd');
+
+  }
 }

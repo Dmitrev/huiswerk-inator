@@ -191,6 +191,16 @@ Route::group([
 			'uses' => 'CommentsController@save'
 		]);
 
+		Route::get('comments/confirm-delete/{id}', [
+			'as' => 'admin-comments.confirm-delete',
+			'uses' => 'CommentsController@confirmDelete'
+		]);
+
+		Route::post('comments/delete', [
+			'as' => 'admin-comments.delete',
+			'uses' => 'CommentsController@delete'
+		]);
+
 		Route::get('comments', [
 			'as' => 'admin-comments.view',
 			'uses' => 'CommentsController@view'
