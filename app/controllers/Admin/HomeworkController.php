@@ -47,4 +47,25 @@ class HomeworkController extends \BaseController{
     return Redirect::back()
       ->with('success', 'Wijzigingen successvol opgeslagen');
   }
+
+  public function confirmDelete($id)
+  {
+    $homework = Homework::findOrFail($id);
+
+    return View::make('admin.homework-confirm-delete')
+      ->with('title', 'Bevestig verwijdering')
+      ->with('homework', $homework);
+  }
+
+  public function delete()
+  {
+    $homework = Homework::findOrFail( Input::get('homework_id') );
+    $h = $homework->title;
+
+    $homework->delete();
+
+    return Redirect::route('admin-homework.view')
+      ->with('success', true)
+      ->with('deleted_item', $h);
+  }
 }

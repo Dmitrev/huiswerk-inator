@@ -1,6 +1,11 @@
 @extends('templates.admin')
 
 @section('content')
+  @if(Session::has('deleted_item'))
+    @include('common.success', ['message' => 'Sucessfully deleted item <strong>'.Session::get('deleted_item').'</strong>'])
+  @else
+    @include('common.success')
+  @endif
 
   <h1>Alle Huiswerk items</h1>
   <table class="table table-striped">
@@ -14,7 +19,7 @@
     <tbody>
       @foreach($homework as $item)
         <tr>
-          <td>{{$item->title}}</td>
+          <td><a href="{{URL::route('admin-homework.show',[$item->id])}}">{{$item->title}}</a></td>
           <td>{{$item->subject->name}}</td>
           <td>{{$item->deadline_friendly}}</td>
         </tr>

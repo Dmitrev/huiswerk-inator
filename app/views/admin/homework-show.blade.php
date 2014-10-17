@@ -12,5 +12,6 @@
 
   <p>
     <a href="{{URL::route('admin-homework.edit', [$homework->id])}}" class="btn btn-default">Bewerken</a>
+    <a href="{{URL::route('admin-homework.confirm-delete', [$homework->id])}}" class="btn btn-danger">Verwijderen</a>
   </p>
 @stop

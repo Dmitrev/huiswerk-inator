@@ -165,4 +165,14 @@ Route::group([
 			'as' => 'admin-homework.save',
 			'uses' => 'HomeworkController@save'
 		]);
+
+		Route::get('homework/confirm-delete/{id}', [
+			'as' => 'admin-homework.confirm-delete',
+			'uses' => 'HomeworkController@confirmDelete'
+		]);
+
+		Route::post('homework/delete', [
+			'as' => 'admin-homework.delete',
+			'uses' => 'HomeworkController@delete'
+		]);
 });
