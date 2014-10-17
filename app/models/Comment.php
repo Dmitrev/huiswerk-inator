@@ -27,4 +27,10 @@ class Comment extends Model{
       ->orderBy('created_at', 'DESC')
       ->paginate(15);
   }
+
+  public function scopeGetId($query, $id = null)
+  {
+    return $query->with(['user', 'homework'])
+      ->findOrFail($id);
+  }
 }

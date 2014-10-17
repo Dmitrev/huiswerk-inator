@@ -176,6 +176,11 @@ Route::group([
 			'uses' => 'HomeworkController@delete'
 		]);
 
+		Route::get('comments/show/{id}', [
+			'as' => 'admin-comments.show',
+			'uses' => 'CommentsController@show'
+			]);
+
 		Route::get('comments', [
 			'as' => 'admin-comments.view',
 			'uses' => 'CommentsController@view'
