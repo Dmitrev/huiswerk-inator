@@ -181,6 +181,16 @@ Route::group([
 			'uses' => 'CommentsController@show'
 			]);
 
+		Route::get('comments/edit/{id}', [
+			'as' => 'admin-comments.edit',
+			'uses' => 'CommentsController@edit'
+		]);
+
+		Route::post('comments/edit', [
+			'as' => 'admin-comments.save',
+			'uses' => 'CommentsController@save'
+		]);
+
 		Route::get('comments', [
 			'as' => 'admin-comments.view',
 			'uses' => 'CommentsController@view'
