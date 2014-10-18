@@ -14,7 +14,6 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' 	=>'HomeController@showHomework'
 	]);
 
-
 	Route::get('logout', [
 		'as' 	=> 'logout',
 		'uses'	=> 'AuthController@logoutUser'

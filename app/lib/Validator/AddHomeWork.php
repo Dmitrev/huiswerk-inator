@@ -6,7 +6,7 @@ class AddHomework extends Validator{
       'title' => 'required',
       'subject_id' => 'required|exists:subjects,id',
       'content' => 'required',
-      'deadline_submit' => 'required|valid_date'
+      'deadline_submit' => 'required'
   ];
 
   public function save()

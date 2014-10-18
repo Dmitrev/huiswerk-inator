@@ -1,6 +1,8 @@
 <?php
 use Carbon\Carbon as Carbon;
 use Util\Str;
+use Util\Date;
+
 class Homework extends Model {
 
     protected $table = 'homework';
@@ -15,10 +17,45 @@ class Homework extends Model {
         return $this->belongsTo('Subject', 'subject_id', 'id');
     }
 
-    public function scopeClosestToDeadline($query)
+    public function scopeCurrentWeek($query)
     {
-        return $query->orderBy('deadline', 'ASC')
-            ->where('deadline', '>', Carbon::now());
+        $date = new Date;
+        $values = $date->currentWeek();
+
+        return $query
+            ->with('subject')
+            ->orderBy('deadline', 'ASC')
+            ->where('deadline', '>=', $values['start'])
+            ->where('deadline', '<', $values['end'])
+            ->paginate(10);
+    }
+
+    public function scopePast($query, $weeks = 1)
+    {
+      $date = new Date;
+      $values = $date->prevWeek($weeks);
+
+      return $query
+          ->with('subject')
+          ->orderBy('deadline', 'ASC')
+          ->where('deadline', '>=', $values['start'])
+          ->where('deadline', '<', $values['end'])
+          ->paginate(10);
+
+    }
+
+    public function scopeFuture($query, $weeks = 1)
+    {
+      $date = new Date;
+      $values = $date->nextWeek($weeks);
+
+      return $query
+          ->with('subject')
+          ->orderBy('deadline', 'ASC')
+          ->where('deadline', '>=', $values['start'])
+          ->where('deadline', '<', $values['end'])
+          ->paginate();
+
     }
 
     private function getDate()
@@ -52,5 +89,7 @@ class Homework extends Model {
         ->orderBy('created_at', 'DESC')
         ->paginate(15);
     }
+
+
 
 }
