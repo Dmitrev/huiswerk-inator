@@ -14,8 +14,7 @@
     </p>
     @include('common.success')
 
-    <h1>Huiswerk</h1>
-
+    <h1>@include('common.home-heading')</h1>
     <a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>
     <div class="wrapper">
     <table class="table table-striped">
@@ -48,6 +47,7 @@
 
     </div>
 
+    @include('common.home-nav')
     {{$homework->links('pagination::simple')}}
 @stop
 

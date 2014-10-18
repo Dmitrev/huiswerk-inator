@@ -18,4 +18,22 @@ class HomeController extends BaseController {
 			->with('homework', $homework);
 	}
 
+
+	public function older($weeks = 1)
+	{
+		$homework = $this->homework->past($weeks);
+		return View::make('home')
+			->with('title', 'Inholland Huiswerk App')
+			->with('older', $weeks)
+			->with('homework', $homework);
+	}
+
+	public function newer($weeks = 1)
+	{
+		$homework = $this->homework->future($weeks);
+		return View::make('home')
+			->with('title', 'Inholland Huiswerk App')
+			->with('newer', $weeks)
+			->with('homework', $homework);
+	}
 }

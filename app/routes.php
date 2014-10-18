@@ -14,6 +14,16 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' 	=>'HomeController@showHomework'
 	]);
 
+	Route::get('older/{weeks?}', [
+		'as' => 'home-older',
+		'uses' => 'HomeController@older'
+	]);
+
+	Route::get('newer/{weeks?}',[
+		'as' => 'home-newer',
+		'uses' => 'HomeController@newer'
+	]);
+
 	Route::get('logout', [
 		'as' 	=> 'logout',
 		'uses'	=> 'AuthController@logoutUser'
