@@ -115,6 +115,36 @@ Route::group( ['before' => 'guest'] , function(){
 		'uses' => 'RegisterController@storeNewAccount'
 	]);
 
+	Route::get('forgot-password', [
+		'as' => 'forgot-password',
+		'uses' => 'PasswordResetController@usernameForm'
+	]);
+
+	Route::post('forgot-password', [
+		'as' => 'forgot-password',
+		'uses' => 'PasswordResetController@usernameCheck'
+	]);
+
+	Route::get('secret-question',[
+		'as' => 'secret-question',
+		'uses' => 'PasswordResetController@secretQuestion'
+	]);
+
+	Route::post('secret-question', [
+		'as' => 'submit-secret-question',
+		'uses' => 'PasswordResetController@answerQuestion'
+	]);
+
+	Route::get('change-password', [
+		'as' => 'change-password',
+		'uses' => 'PasswordResetController@changePassword'
+	]);
+
+	Route::post('change-password', [
+		'as' => 'submit-change-password',
+		'uses' => 'PasswordResetController@submitNewPassword'
+	]);
+
 });
 
 Route::group([

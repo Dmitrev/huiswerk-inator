@@ -1,8 +1,9 @@
 @extends('templates.default')
 
 @section('content')
-    
+
     @include('common.error')
+    @include('common.success')
     <h1>Huiswerk App</h1>
     {{Form::open( ['route'=>'validate', 'class' => 'form-horizontal', 'role' => 'form'])}}
         <div class="form-group">
@@ -28,15 +29,16 @@
                 </div>
             </div>
         </div>
-            
+
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             {{Form::submit('Inloggen', ['class' => 'btn btn-primary'])}}
+            <a href="{{URL::route('forgot-password')}}" class="btn btn-default">Wachtwoord vergeten?</a>
         </div>
     </div>
 
     {{Form::close()}}
-    
+
     <h2>Nog geen account?</h2>
         <a class="btn btn-info" href="{{URL::route('create-account')}}">Account aanmaken</a>
 @stop

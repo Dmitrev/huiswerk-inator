@@ -63,4 +63,14 @@ class User extends Model implements UserInterface, RemindableInterface {
 			return $list->orderBy('fullname')->paginate(15);
 	}
 
+	public function scopeGetByUsername($query, $username = NULL)
+	{
+		return $query->where('username', '=',$username);
+	}
+
+	public function scopeGetSecure($query, $id, $hash)
+	{
+		return $query->where('id', '=', $id)->where('secret_answer', '=', $hash);
+	}
+
 }

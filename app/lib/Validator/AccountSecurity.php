@@ -12,7 +12,7 @@ class AccountSecurity extends Validator{
     $user = User::findOrFail($id);
 
     $user->secret_question = $this->get('secret_question');
-    $user->secret_answer = Hash::make($this->get('secret_answer'));
+    $user->secret_answer = Hash::make( $this->get( Str::lower('secret_answer') ) );
     $user->save();
   }
 }
