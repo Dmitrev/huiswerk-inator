@@ -34,6 +34,11 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'HomeworkController@showItem'
 	]);
 
+	Route::post('homework/done', [
+		'as' => 'homework-done',
+		'uses' => 'HomeworkController@setDone'
+	]);
+
 	Route::get('homework/add', [
 		'as' => 'add-homework',
 		'uses' => 'HomeworkController@showAddHomeworkForm'

@@ -17,6 +17,10 @@ class Homework extends Model {
         return $this->belongsTo('Subject', 'subject_id', 'id');
     }
 
+    public function scopeGetId($query, $id){
+      return $query->with(['subject', 'done'])->findOrFail($id);
+    }
+
     public function scopeCurrentWeek($query)
     {
         $date = new Date;
@@ -88,6 +92,11 @@ class Homework extends Model {
       return $query->with('subject')
         ->orderBy('created_at', 'DESC')
         ->paginate(15);
+    }
+
+    public function done()
+    {
+      return $this->hasMany('HomeworkDone', 'homework_id', 'id');
     }
 
 
