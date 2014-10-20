@@ -17,7 +17,7 @@
     <h1>@include('common.home-heading')</h1>
     <a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>
     <div class="wrapper">
-    <table class="table table-striped">
+    <table class="table table">
         <thead>
             <tr>
                 <th class="col-xs-2">Deadline</th>
@@ -26,7 +26,8 @@
         </thead>
         <tbody>
         @foreach( $homework as $item )
-            <tr>
+
+            <tr @if( $item->user_done ) class="success" @endif>
                 <td>
                     <span class="label label-danger">{{$item->deadline_day}} {{$item->deadline_month}}</span>
                 </td>
@@ -34,7 +35,7 @@
                     <div>
                         <span class="label label-default">{{$item->subject->abbreviation}}</span>
                         <a href="{{URL::route('homework', [$item->id])}}">
-                            {{{$item->title}}}
+                            @if($item->user_done) <i class="fa fa-check"></i> @endif {{{$item->title}}}
                         </a>
                     </div>
 

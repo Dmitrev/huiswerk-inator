@@ -6,7 +6,7 @@ use Util\Date;
 class Homework extends Model {
 
     protected $table = 'homework';
-    protected $appends = ['deadline_day', 'deadline_month', 'deadline_friendly'];
+    protected $appends = ['deadline_day', 'deadline_month', 'deadline_friendly', 'user_done'];
 
 
 
@@ -26,12 +26,7 @@ class Homework extends Model {
         $date = new Date;
         $values = $date->currentWeek();
 
-        return $query
-            ->with('subject')
-            ->orderBy('deadline', 'ASC')
-            ->where('deadline', '>=', $values['start'])
-            ->where('deadline', '<', $values['end'])
-            ->paginate(10);
+        return $this->getHomeworkList($query, $values);
     }
 
     public function scopePast($query, $weeks = 1)
@@ -39,27 +34,26 @@ class Homework extends Model {
       $date = new Date;
       $values = $date->prevWeek($weeks);
 
-      return $query
-          ->with('subject')
-          ->orderBy('deadline', 'ASC')
-          ->where('deadline', '>=', $values['start'])
-          ->where('deadline', '<', $values['end'])
-          ->paginate(10);
+      return $this->getHomeworkList($query, $values);
 
     }
 
-    public function scopeFuture($query, $weeks = 1)
+      public function scopeFuture($query, $weeks = 1)
     {
       $date = new Date;
       $values = $date->nextWeek($weeks);
 
+      return $this->getHomeworkList($query, $values);
+
+    }
+
+    public function getHomeworkList($query, $values){
       return $query
-          ->with('subject')
+          ->with(['subject', 'done'])
           ->orderBy('deadline', 'ASC')
           ->where('deadline', '>=', $values['start'])
           ->where('deadline', '<', $values['end'])
-          ->paginate();
-
+          ->paginate(10);
     }
 
     private function getDate()
@@ -97,6 +91,14 @@ class Homework extends Model {
     public function done()
     {
       return $this->hasMany('HomeworkDone', 'homework_id', 'id');
+    }
+
+    public function getUserDoneAttribute()
+    {
+      if( !isset($this->done))
+        return NULL;
+
+      return in_array( Auth::user()->id, $this->done->lists('user_id') );
     }
 
 

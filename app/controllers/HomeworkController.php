@@ -14,15 +14,9 @@ class HomeworkController extends BaseController {
 
     public function showItem( $homeworkId )
     {
-        $user_done = false;
 
         $homework = $this->homework->getId($homeworkId);
 
-        # Check if the current user completed the homework
-        if( in_array( Auth::user()->id, $homework->done->lists('user_id') ) )
-        {
-          $user_done = true;
-        }
 
         $comments = Comment::getComments($homeworkId);
 
@@ -30,7 +24,7 @@ class HomeworkController extends BaseController {
             ->with('title', $homework->title)
             ->with('item', $homework)
             ->with('comments', $comments)
-            ->with('user_done', $user_done);
+            ->with('user_done', $homework->user_done);
     }
 
     public function showAddHomeworkForm()
