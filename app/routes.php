@@ -90,6 +90,26 @@ Route::group( ['before' => 'auth'] , function(){
 			'uses' => 'CommentsController@post'
 	]);
 
+	Route::get('comment/edit/{id}', [
+		'as' => 'edit-comment',
+		'uses' => 'CommentsController@edit'
+	]);
+
+	Route::post('comment/update', [
+		'as' => 'update-comment',
+		'uses' => 'CommentsController@update'
+	]);
+
+	Route::get('comment/confirm-delete/{id}', [
+		'as' => 'confirm-delete-comment',
+		'uses' => 'CommentsController@confirmDelete'
+	]);
+
+	Route::post('comment/delete', [
+		'as' => 'delete-comment',
+		'uses' => 'CommentsController@delete'
+	]);
+
 });
 
 Route::group( ['before' => 'guest'] , function(){

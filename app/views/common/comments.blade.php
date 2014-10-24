@@ -20,12 +20,22 @@
   <h2>Reacties</h2>
   @if(isset($comments))
     @foreach($comments as $comment)
+    <div class="comment-wrapper">
       <strong>{{$comment->user->fullname}}</strong>
       <div id="comment-{{$comment->id}}" class="panel panel-default">
         <div class="panel-body">
           {{$comment->body}}
         </div>
+
       </div>
+      {{-- Edit comment --}}
+      @if( Auth::user()->id === $comment->user_id )
+          <div>
+            <a href="{{URL::route('edit-comment', [$comment->id])}}"><i class="fa fa-pencil"></i> bewerken</a>
+            <a href="{{URL::route('confirm-delete-comment', [$comment->id])}}"><i class="fa fa-trash"></i> verwijderen</a>
+          </div>
+      @endif
+    </div>
     @endforeach
   @endif
 </div>
