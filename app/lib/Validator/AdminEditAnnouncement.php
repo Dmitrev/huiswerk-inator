@@ -12,7 +12,7 @@ class AdminEditAnnouncement extends Validator{
     $announcement->title = $this->get('title');
     $announcement->message = $this->get('message');
     $announcement->start_date = $this->get('start_date_submit');
-    $announcement->end_date = $this->get('start_end_submit');
+    $announcement->end_date = $this->get('end_date_submit');
     $announcement->save();
   }
 }
