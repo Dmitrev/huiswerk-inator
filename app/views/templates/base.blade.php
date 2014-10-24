@@ -30,5 +30,7 @@
             {{HTML::script('plugins/pickadate/lib/compressed/picker.js')}}
             {{HTML::script('plugins/pickadate/lib/compressed/picker.date.js')}}
             {{HTML::script('js/datepicker.js')}}
+
+            @yield('js')
         </body>
 </html>

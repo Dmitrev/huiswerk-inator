@@ -173,11 +173,20 @@ Route::group([
 		'namespace' => 'Admin']
 		, function(){
 
-	Route::get('/', [
+		Route::get('/', [
 			'as' => 'admin-dashboard',
 			'uses' => 'DashboardController@view'
 		]);
 
+		Route::get('anouncement/new', [
+			'as' => 'admin-anouncment.add',
+			'uses' => 'AnouncementController@add'
+		]);
+
+		Route::post('anouncement/create', [
+			'as' => 'admin-anouncement.create',
+			'uses' => 'AnouncementController@create'
+		]);
 
 		Route::post('users/delete', [
 			'as' => 'admin-users.delete',

@@ -76,6 +76,7 @@ return array(
 	/* Custom validation messages */
 	"valid_date" => "The :attribute is invalid, it must be a valid date and also not in the weekend or in the past",
 	"password_check" => "The :attribute field must equal your current password",
+	"before_date" => "The :attribute must be a date before :date"
 
 
 	/*

@@ -21,15 +21,15 @@ class BaseController extends \BaseController{
 
   private function defineNav()
   {
-    $this->add('dashboard', 'admin-dashboard', 'Dashboard');
-    $this->add('users', 'admin-users.view', 'Gebruikers');
-    $this->add('homework', 'admin-homework.view', 'Huiswerk');
-    $this->add('comments', 'admin-comments.view', 'Reacties');
+    $this->addNav('dashboard', 'admin-dashboard', 'Dashboard');
+    $this->addNav('users', 'admin-users.view', 'Gebruikers');
+    $this->addNav('homework', 'admin-homework.view', 'Huiswerk');
+    $this->addNav('comments', 'admin-comments.view', 'Reacties');
 
     $this->refresh();
   }
 
-  private function add($key, $route, $value)
+  private function addNav($key, $route, $value)
   {
     $this->nav[$key] = [
       'route' => $route,
