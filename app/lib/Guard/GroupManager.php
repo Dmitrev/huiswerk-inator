@@ -6,12 +6,15 @@ class GroupManager{
   /* Current group */
   private $group;
   private $user;
+  private $groups;
   private $groupNamespace = "\\Guard\\Groups\\";
 
-  public function __construct( $user )
+  public function __construct( $user = null)
   {
-    $this->user = $user;
-    $this->group = $this->getGroup();
+    if( !is_null($user) ){
+      $this->user = $user;
+      $this->group = $this->getGroup();
+    }
   }
 
   public function getGroup()
@@ -75,6 +78,20 @@ class GroupManager{
   public function has( $permission )
   {
     return in_array( $permission, $this->group->getPermissions() );
+  }
+
+  public function getAllGroups()
+  {
+    $list = [];
+    $groups = Config::get('groups');
+
+    foreach( $groups as $id => $class ){
+      $object = $this->getGroupObject($class);
+
+      $list[$id] = $object->getName();
+    }
+
+    return $list;
   }
 
 }

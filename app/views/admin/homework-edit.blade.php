@@ -13,7 +13,7 @@
       {{Form::label('title', 'Titel: ')}}
       {{Form::text('title', Input::old('title', $homework->title), ['class' => 'form-control'])}}
     </div>
-
+    
     <div class="form-group">
     {{Form::label('subject_id', 'Vak: ')}}
         {{Form::select('subject_id', $subjects, Input::old('subject_id', $homework->subject_id), ['class' => 'form-control'] )}}

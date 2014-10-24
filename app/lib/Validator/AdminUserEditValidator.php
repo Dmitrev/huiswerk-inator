@@ -6,6 +6,7 @@ class AdminUserEditValidator extends Validator{
     'fullname' => 'required',
     'username' => 'unique:users,username|alpha_dash|min:3|max:15',
     'password' => 'min:3|confirmed',
+    'group' => 'required|valid_group'
   ];
 
   public function save($id = NULL)
@@ -20,6 +21,7 @@ class AdminUserEditValidator extends Validator{
     if( $this->has( 'password' ) )
       $user->password = Hash::make( $this->get('password') );
 
+    $user->group = $this->get('group');
     $user->save();
 
     return true;

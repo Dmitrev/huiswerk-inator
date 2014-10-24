@@ -7,17 +7,18 @@
   </a>
   <h1>Gebruiker {{$user->username}} aanpassen</h1>
 
-  @if( $errors->any() )
-    @foreach($errors->all() as $error)
-      <p>{{$error}}</p>
-    @endforeach
-  @endif
+  @include('common.error')
 
   {{Form::open(['route' => 'admin-users.save'])}}
   <input type="hidden" name="id" value="{{$user->id}}">
   <div class="form-group">
     {{Form::label('fullname', 'Naam: ')}}
     {{Form::text('fullname', Input::old('fullname', $user->fullname), ['class' => 'form-control'])}}
+  </div>
+
+  <div class="form-group">
+    {{Form::label('group', 'Groep: ')}}
+    {{Form::select('group', $groups, Input::old('group', $user->group), ['class' => 'form-control'])}}
   </div>
 
   <div class="form-group">

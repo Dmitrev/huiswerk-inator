@@ -1,6 +1,7 @@
 <?php namespace Admin;
 
 use User, Input, View, Auth, Redirect, Validator\AdminUserEditValidator;
+use Guard\GroupManager;
 
 
 class UsersController extends BaseController{
@@ -37,9 +38,13 @@ class UsersController extends BaseController{
   {
     $user = User::findOrFail($id);
 
+    $manager = new GroupManager();
+
+
     return View::make('admin.users-edit')
       ->with('title', "Gebruiker $user->username ($user->fullname) aanpassen")
-      ->with('user', $user);
+      ->with('user', $user)
+      ->with('groups', $manager->getAllGroups());
   }
 
   public function save()
