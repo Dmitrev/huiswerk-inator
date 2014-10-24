@@ -4,7 +4,11 @@
 
   <h1>Belangrijke meldingen</h1>
 
-  @include('common.success')
+  @if( Session::has('deleted_item'))
+    @include('common.success', ['message' => 'Melding <strong>'.Session::get('deleted_item').'</strong> is succesvol verwijderd.'])
+  @else
+    @include('common.success')
+  @endif
   <a href="{{URL::route('admin-announcement.add')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nieuwe melding</a>
 
   <table class="table">

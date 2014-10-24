@@ -24,6 +24,6 @@
 
   <div class="form-group">
     <a href="{{URL::route('admin-announcement.edit', [$announcement->id])}}" class="btn btn-default"><i class="fa fa-pencil"></i> bewerken</a>
-    <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> verwijderen</a>
+    <a href="{{URL::route('admin-announcement.confirm-delete', [$announcement->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i> verwijderen</a>
   </div>
 @stop

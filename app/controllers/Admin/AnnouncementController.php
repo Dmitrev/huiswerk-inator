@@ -68,4 +68,25 @@ class AnnouncementController extends BaseController{
       ->with('success', Config::get('messages.announcement.edited'));
 
   }
+
+  public function confirmDelete($id)
+  {
+    $announcement = Announcement::findOrFail($id);
+
+    return View::make('admin.announcement-confirm-delete')
+      ->with('title', 'Verwijdering melding bevestiging')
+      ->with('announcement', $announcement);
+  }
+
+
+  public function delete()
+  {
+    $announcement = Announcement::findOrFail(Input::get('id'));
+    $item = $announcement->title;
+    $announcement->delete();
+
+    return Redirect::route('admin-dashboard')
+      ->with('success', true)
+      ->with('deleted_item', $item);
+  }
 }

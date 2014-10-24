@@ -203,6 +203,16 @@ Route::group([
 			'uses' => 'AnnouncementController@update'
 		]);
 
+		Route::get('announcement/confirm-delete/{id}', [
+			'as' => 'admin-announcement.confirm-delete',
+			'uses' => 'AnnouncementController@confirmDelete'
+		]);
+
+		Route::post('announcement/delete', [
+			'as' => 'admin-announcement.delete',
+			'uses' => 'AnnouncementController@delete'
+		]);
+
 		Route::post('users/delete', [
 			'as' => 'admin-users.delete',
 			'uses' => 'UsersController@delete'
