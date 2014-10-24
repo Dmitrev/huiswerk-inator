@@ -178,14 +178,29 @@ Route::group([
 			'uses' => 'DashboardController@view'
 		]);
 
-		Route::get('anouncement/new', [
-			'as' => 'admin-anouncment.add',
-			'uses' => 'AnouncementController@add'
+		Route::get('announcement/new', [
+			'as' => 'admin-announcement.add',
+			'uses' => 'AnnouncementController@add'
 		]);
 
-		Route::post('anouncement/create', [
-			'as' => 'admin-anouncement.create',
-			'uses' => 'AnouncementController@create'
+		Route::post('announcement/create', [
+			'as' => 'admin-announcement.create',
+			'uses' => 'AnnouncementController@create'
+		]);
+
+		Route::get('announcement/show/{id}', [
+			'as' => 'admin-announcement.show',
+			'uses' => 'AnnouncementController@show',
+		]);
+
+		Route::get('announcement/edit/{id}', [
+			'as' => 'admin-announcement.edit',
+			'uses' => 'AnnouncementController@edit',
+		]);
+
+		Route::post('announcement/update',[
+			'as' => 'admin-announcement.update',
+			'uses' => 'AnnouncementController@update'
 		]);
 
 		Route::post('users/delete', [

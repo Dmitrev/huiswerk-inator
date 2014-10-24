@@ -3,7 +3,7 @@
 @section('content')
   <h1>Nieuwe melding plaatsen</h1>
   @include('common.error')
-  {{Form::open(['route' => 'admin-anouncement.create'])}}
+  {{Form::open(['route' => 'admin-announcement.create'])}}
     <div class="form-group">
         {{Form::label('title', 'Titel: ')}}
         {{Form::text('title', Input::old('title'), ['class' => 'form-control'])}}

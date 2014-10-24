@@ -15,4 +15,9 @@
       'invalid-answer' => 'Het antwoord op de vraag klopt niet',
       'password-changed' => 'Je wachtwoord is successvol gewijzigd',
     ],
+
+    'announcement' => [
+      'added' => 'Melding is succesvol opgeslagen.',
+      'edited' => 'Melding is succesvol aangepast.',
+    ],
 ];

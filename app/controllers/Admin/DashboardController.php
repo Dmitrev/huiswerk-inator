@@ -1,12 +1,16 @@
 <?php namespace Admin;
-use View;
+use View, Announcement;
 
 class DashboardController extends BaseController{
   protected $active_nav = 'dashboard';
-  
+
   public function view()
   {
+
+    $announcements = Announcement::getList()->paginate(15);
+
     return View::make('admin.dashboard')
-      ->with('title', 'Admin Dashboard');
+      ->with('title', 'Admin Dashboard')
+      ->with('announcements', $announcements);
   }
 }

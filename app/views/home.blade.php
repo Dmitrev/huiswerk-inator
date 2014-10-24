@@ -13,6 +13,11 @@
     @endif
     </p>
     @include('common.success')
+    @foreach( $announcements as $announcement)
+      <div class="alert alert-info" role="alert">
+        <i class="fa fa-bullhorn"></i> {{$announcement->title}}
+      </div>
+    @endforeach
 
     <h1>@include('common.home-heading')</h1>
     <a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>
