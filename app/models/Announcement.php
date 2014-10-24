@@ -6,8 +6,10 @@ class Announcement extends Model{
   protected $appends = ['friendly_start_date', 'friendly_end_date'];
 
   public function scopeOfTheDay($query){
-    return $query->where('start_date', '<=', Carbon::now() )
-      ->where('end_date', '>=', Carbon::now() );
+    $now = Carbon::now()->toDateString();
+
+    return $query->where('start_date', '<=', $now )
+      ->where('end_date', '>=', $now );
   }
 
   private function getDate($date)
