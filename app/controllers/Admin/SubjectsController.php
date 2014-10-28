@@ -7,7 +7,7 @@ class SubjectsController extends BaseController{
     $subjects = Subject::paginate(10);
 
     return $this->view('index', [
-
+      'heading' => 'Overzicht van alle vakken',
       'resource' => 'subject',
       'entries' => $subjects,
 

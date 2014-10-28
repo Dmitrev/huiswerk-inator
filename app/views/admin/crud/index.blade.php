@@ -1,7 +1,7 @@
 @extends('templates.admin')
 
 @section('content')
-  <h1>Overview</h1>
+  <h1>{{$data['heading'] or 'overzicht'}}</h1>
 
   <table class="table">
     <thead>
