@@ -50,4 +50,18 @@ class BaseController extends \BaseController{
       $this->refresh();
     }
   }
+
+  protected function overview($resource, $title, $data, $entries)
+  {
+    return $this->view('index',$resource, $title, $data, $entries);
+  }
+
+  private function view($view, $resource, $title, $data, $entries)
+  {
+    return View::make('admin.crud.'.$view)
+      ->with('resource', $resource)
+      ->with('title', $title)
+      ->with('data', $data)
+      ->with('entries', $entries);
+  }
 }

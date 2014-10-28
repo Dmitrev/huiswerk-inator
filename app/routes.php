@@ -303,4 +303,6 @@ Route::group([
 			'as' => 'admin-comments.view',
 			'uses' => 'CommentsController@view'
 		]);
+
+		Route::resource('subject', 'SubjectsController');
 });
