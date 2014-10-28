@@ -36,4 +36,8 @@
       @endforeach
     </tbody>
   </table>
+
+  @if( method_exists($entries, 'links'))
+    {{$entries->appends( Input::except('page') )->links()}}
+  @endif
 @stop
