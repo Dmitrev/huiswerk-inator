@@ -6,19 +6,24 @@ class SubjectsController extends BaseController{
 
     $subjects = Subject::paginate(10);
 
-    return $this->overview('subject', 'title', [
+    return $this->view('index', [
 
-      [
-        'heading' => 'ID',
-        'source' => 'id'
-      ],
+      'resource' => 'subject',
+      'entries' => $subjects,
 
-      [
-          'heading' => 'naam',
-          'source' => 'name',
-          'link' => true
+      'cols' => [
+        [
+          'heading' => 'ID',
+          'source' => 'id'
+        ],
+
+        [
+            'heading' => 'naam',
+            'source' => 'name',
+            'link' => true
+        ]
       ]
-    ], $subjects);
+    ]);
 
   }
 

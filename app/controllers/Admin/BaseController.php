@@ -51,17 +51,10 @@ class BaseController extends \BaseController{
     }
   }
 
-  protected function overview($resource, $title, $data, $entries)
-  {
-    return $this->view('index',$resource, $title, $data, $entries);
-  }
 
-  private function view($view, $resource, $title, $data, $entries)
+  protected function view($view, $data)
   {
     return View::make('admin.crud.'.$view)
-      ->with('resource', $resource)
-      ->with('title', $title)
-      ->with('data', $data)
-      ->with('entries', $entries);
+      ->with('data', $data);
   }
 }

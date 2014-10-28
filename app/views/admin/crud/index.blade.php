@@ -7,7 +7,7 @@
     <thead>
 
       <tr>
-        @foreach($data as $row)
+        @foreach($data['cols'] as $row)
           <th>{{$row['heading']}}</td>
         @endforeach
       </tr>
@@ -15,14 +15,14 @@
     </thead>
 
     <tbody>
-      @foreach($entries as $entry)
+      @foreach($data['entries'] as $entry)
 
       <tr>
-        @foreach( $data as $row)
+        @foreach( $data['cols'] as $row)
           <td>
 
             @if( isset( $row['link'] ) )
-              <a href="{{URL::route('admin.'.$resource.'.show', [$entry->id])}}">
+              <a href="{{URL::route('admin.'.$data['resource'].'.show', [$entry->id])}}">
             @endif
               {{$entry->$row['source']}}
             @if( isset( $row['link'] ) )
@@ -37,7 +37,7 @@
     </tbody>
   </table>
 
-  @if( method_exists($entries, 'links'))
-    {{$entries->appends( Input::except('page') )->links()}}
+  @if( method_exists($data['entries'], 'links'))
+    {{$data['entries']->appends( Input::except('page') )->links()}}
   @endif
 @stop
