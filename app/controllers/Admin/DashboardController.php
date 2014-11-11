@@ -4,7 +4,7 @@ use View, Announcement;
 class DashboardController extends BaseController{
   protected $active_nav = 'dashboard';
 
-  public function view()
+  public function overview()
   {
 
     $announcements = Announcement::getList()->paginate(15);
