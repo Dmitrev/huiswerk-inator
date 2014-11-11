@@ -52,7 +52,7 @@ class BaseController extends \BaseController{
   }
 
 
-  protected function view($view, $data)
+  protected function makeView($view, $data)
   {
     return View::make('admin.crud.'.$view)
       ->with('data', $data);

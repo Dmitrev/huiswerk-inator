@@ -175,7 +175,7 @@ Route::group([
 
 		Route::get('/', [
 			'as' => 'admin-dashboard',
-			'uses' => 'DashboardController@overview'
+			'uses' => 'DashboardController@view'
 		]);
 
 		Route::get('announcement/new', [
