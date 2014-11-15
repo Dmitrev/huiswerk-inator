@@ -304,5 +304,5 @@ Route::group([
 			'uses' => 'CommentsController@view'
 		]);
 
-		Route::resource('subject', 'SubjectsController');
+		Route::resource('subject', 'SubjectController');
 });

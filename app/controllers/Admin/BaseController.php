@@ -25,6 +25,7 @@ class BaseController extends \BaseController{
     $this->addNav('users', 'admin-users.view', 'Gebruikers');
     $this->addNav('homework', 'admin-homework.view', 'Huiswerk');
     $this->addNav('comments', 'admin-comments.view', 'Reacties');
+    $this->addNav('subjects', 'admin.subject.index', 'Vakken');
 
     $this->refresh();
   }
