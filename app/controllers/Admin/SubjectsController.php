@@ -5,27 +5,7 @@ class SubjectsController extends BaseController{
   public function index() {
 
     $subjects = Subject::paginate(10);
-
-    return $this->makeView('index', [
-
-      'heading' => 'Overzicht van alle vakken',
-      'resource' => 'subject',
-      'entries' => $subjects,
-
-      'cols' => [
-        [
-          'heading' => 'ID',
-          'source' => 'id'
-        ],
-
-        [
-            'heading' => 'naam',
-            'source' => 'name',
-            'link' => true
-        ]
-      ]
-    ]);
-
+    return 'list subjects';
   }
 
   public function create() {
