@@ -64,7 +64,13 @@ protected $active_nav = 'subjects';
 	 */
 	public function show($id)
 	{
-		//
+
+		$subject = Subject::findOrFail($id);
+
+		return View::make('admin.subject.show')
+			->with('title', 'Vak bekijken')
+			->with('subject', $subject);
+
 	}
 
 

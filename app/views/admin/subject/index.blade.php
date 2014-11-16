@@ -24,7 +24,7 @@
 
         <tr>
           <td>{{$subject->id}}</td>
-          <td>{{$subject->name}}</td>
+          <td><a href="{{URL::route('admin.subject.show', [$subject->id])}}">{{{$subject->name}}}</a></td>
         </tr>
 
       @endforeach
