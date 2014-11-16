@@ -2,6 +2,12 @@
 
 @section('content')
   <h1>Lijst met alle vakken</h1>
+  <div class="form-group">
+    <a href="{{URL::route('admin.subject.create')}}" class="btn btn-primary">
+      <i class="fa fa-plus"></i> Vak toevoegen
+    </a>
+  </div>
+  @include('common.success')
   @if( !isset($subjects) or $subjects->count() === 0 )
     @include('common.warning', ['message' => 'Er zijn geen vakken gevonden'])</p>
   @else

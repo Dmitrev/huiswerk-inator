@@ -1,5 +1,6 @@
 <?php namespace Admin;
-use Subject, View;
+use Subject, Input, View, Redirect;
+use Validator\AdminNewSubject;
 class SubjectController extends BaseController {
 
 protected $active_nav = 'subjects';
@@ -27,7 +28,8 @@ protected $active_nav = 'subjects';
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.subject.create')
+			->with('title','Nieuw vak toevoegen');
 	}
 
 
@@ -38,7 +40,19 @@ protected $active_nav = 'subjects';
 	 */
 	public function store()
 	{
-		//
+		$v = new AdminNewSubject( Input::all() );
+
+		if( $v->fails() ){
+
+			return Redirect::back()
+				->withInput()
+				->withErrors( $v->errors() );
+		}
+
+		$v->save();
+
+		return Redirect::route('admin.subject.index')
+			->with('success', 'Vak successvol toegevoegd');
 	}
 
 
