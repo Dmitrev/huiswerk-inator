@@ -1,6 +1,9 @@
 <?php namespace Admin;
+
 use Subject, Input, View, Redirect;
 use Validator\AdminNewSubject;
+use Validator\AdminEditSubject;
+
 class SubjectController extends BaseController {
 
 protected $active_nav = 'subjects';
@@ -82,7 +85,11 @@ protected $active_nav = 'subjects';
 	 */
 	public function edit($id)
 	{
-		//
+		$subject = Subject::findOrFail($id);
+
+		return View::make('admin.subject.edit')
+			->with('title', 'Vak bewerken')
+			->with('subject', $subject);
 	}
 
 
@@ -94,7 +101,21 @@ protected $active_nav = 'subjects';
 	 */
 	public function update($id)
 	{
-		//
+		$subject = Subject::findOrFail($id);
+
+		$v = new AdminEditSubject( Input::all(), $subject );
+
+		if( $v->fails() )
+		{
+			return Redirect::back()
+				->withInput()
+				->withErrors( $v->errors() );
+		}
+
+		$v->save();
+
+		return Redirect::route('admin.subject.index')
+			->with('success', 'Wijzigingen zijn successvol opgeslagen');
 	}
 
 
@@ -106,7 +127,13 @@ protected $active_nav = 'subjects';
 	 */
 	public function destroy($id)
 	{
-		//
+		$subject = Subject::findOrFail($id);
+		$name = $subject->name;
+		$subject->delete();
+
+		return Redirect::back()
+			->with('success', true)
+			->with('del_item', $name);
 	}
 
 

@@ -7,7 +7,13 @@
       <i class="fa fa-plus"></i> Vak toevoegen
     </a>
   </div>
+
+  @if( Session::has('del_item'))
+  @include('common.success', ['message' => 'Vak <strong>'.Session::get('del_item').'</strong> is succesvol verwijdered'])
+  @else
   @include('common.success')
+  @endif
+
   @if( !isset($subjects) or $subjects->count() === 0 )
     @include('common.warning', ['message' => 'Er zijn geen vakken gevonden'])</p>
   @else
@@ -16,6 +22,7 @@
       <tr>
         <th>Title</th>
         <th>Vak</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
@@ -25,6 +32,12 @@
         <tr>
           <td>{{$subject->id}}</td>
           <td><a href="{{URL::route('admin.subject.show', [$subject->id])}}">{{{$subject->name}}}</a></td>
+          <td>
+            @include('common.admin-actions', [
+              'prefix' => 'admin.subject',
+              'entry' => $subject]
+            )
+          </td>
         </tr>
 
       @endforeach

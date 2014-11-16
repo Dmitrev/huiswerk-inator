@@ -3,10 +3,8 @@
 use Subject;
 
 class AdminNewSubject extends Validator{
-  protected $rules = [
-    'name' => 'required|max:255',
-    'abbreviation' => 'required|max:3|alpha_num'
-  ];
+
+  protected $config = 'subject';
 
   public function save()
   {
@@ -15,4 +13,5 @@ class AdminNewSubject extends Validator{
     $subject->abbreviation = $this->get('abbreviation');
     $subject->save();
   }
+
 }

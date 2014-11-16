@@ -1,5 +1,5 @@
 <?php namespace Validator;
-use App;
+use App, Config;
 
 class Validator{
 
@@ -9,11 +9,16 @@ class Validator{
   protected $input = [];
   protected $entry = null;
   protected $validation;
+  protected $config = false;
 
-  public function __construct( $input )
+  public function __construct( $input, $entry = null )
   {
     $this->Validator = App::make('validator');
     $this->input = $input;
+    $this->entry = $entry;
+    // Get rules from config file
+    $this->setRulesFromConfig();
+
     $this->createValidator($input);
   }
 
@@ -55,4 +60,13 @@ class Validator{
   {
     return $this->entry;
   }
+
+  protected function setRulesFromConfig()
+  {
+    if( !is_string( $this->config ) )
+      return false;
+
+    $this->rules = Config::get('validation.'.$this->config);
+  }
+
 }

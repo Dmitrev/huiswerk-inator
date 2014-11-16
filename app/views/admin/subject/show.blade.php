@@ -5,6 +5,7 @@
     <a href="{{URL::route('admin.subject.index')}}" class="btn btn-default">
       <i class="fa fa-arrow-left"></i> Terug naar overzicht
     </a>
+
   </div>
   <h1>Vak bekijken</h1>
 
@@ -20,5 +21,14 @@
     <dt>Afkorting</dt>
     <dd>{{{$subject->abbreviation}}}</dd>
   </dl>
+
+  <div class="form-group">
+    @include('common.admin-actions',
+    [
+      'prefix' => 'admin.subject',
+      'entry' => $subject
+    ])
+  </div>
+
   @endif
 @stop
