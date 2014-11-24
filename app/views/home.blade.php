@@ -1,17 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-    <p>Ingelogd als {{ Auth::user()->fullname }}, <a href="{{URL::route('logout') }}">uitloggen</a></p>
-    <p>
-      <a href="{{URL::route('account')}}" class="btn btn-default">
-      <i class="fa fa-cog"></i>  Mijn account
-      </a>
-    @if( Auth::user()->has('admin') )
-      <a href="{{URL::route('admin-dashboard')}}" class="btn btn-default">
-        <i class="fa fa-tachometer"></i> Admin Dashboard
-      </a>
-    @endif
-    </p>
+
     @include('common.success')
     @foreach( $announcements as $announcement)
       <div class="alert alert-info" role="alert">
@@ -20,8 +10,9 @@
     @endforeach
 
     <h1>@include('common.home-heading')</h1>
-    <a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>
+    {{--<a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>--}}
     <div class="wrapper">
+      @include('common.home-nav')
     <table class="table table">
         <thead>
             <tr>
@@ -53,8 +44,8 @@
 
     </div>
 
-    @include('common.home-nav')
-    {{$homework->links('pagination::simple')}}
+
+
 @stop
 
 
