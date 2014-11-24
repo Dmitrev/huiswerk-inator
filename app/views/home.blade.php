@@ -5,7 +5,12 @@
     @include('common.success')
     @foreach( $announcements as $announcement)
       <div class="alert alert-info" role="alert">
-        <i class="fa fa-bullhorn"></i> {{$announcement->title}}
+        <div class="row">
+        <div class="col-xs-8"><i class="fa fa-bullhorn"></i> {{$announcement->title}}</div>
+        <div class="col-xs-4">
+          <a class="btn btn-default" href="{{URL::route('announcement', [$announcement->id])}}">Bekijken</a>
+        </div>
+      </div>
       </div>
     @endforeach
 
@@ -34,10 +39,8 @@
                             @if($item->user_done) <i class="fa fa-check"></i> @endif {{{$item->title}}}
                         </a>
                     </div>
-
                 </td>
             </tr>
-
         @endforeach
         </tbody>
     </table>

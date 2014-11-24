@@ -10,7 +10,7 @@
     </ul>
     <h2>Beschrijving</h2>
     <div class="well">
-      <p>{{$item->content}}</p>
+      {{ Util\Str::enters( e($item->content) )}}
     </div>
     {{Form::open(['route' => 'homework-done'])}}
     {{Form::hidden('homework_id', $item->id)}}

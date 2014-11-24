@@ -5,6 +5,10 @@
     margin-top: 20px;
 }
 
+.holder{
+  overflow:auto;
+}
+
 div.homework-item{
     padding: 10px 0 10px 0;
 }

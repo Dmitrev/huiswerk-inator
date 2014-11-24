@@ -110,6 +110,11 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'CommentsController@delete'
 	]);
 
+	Route::get('announcement/{id}', [
+		'as' => 'announcement',
+		'uses' => 'AnnouncementsController@view'
+	]);
+
 });
 
 Route::group( ['before' => 'guest'] , function(){
