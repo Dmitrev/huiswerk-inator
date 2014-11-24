@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-    @include('common.back')
+    @include('common.i-back')
     <h1>{{$item->title}}</h1>
 
     <ul class="list-inline">

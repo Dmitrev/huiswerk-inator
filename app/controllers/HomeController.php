@@ -9,6 +9,11 @@ class HomeController extends BaseController {
 		$this->homework = $homework;
 	}
 
+	private function setPreviousPage($weeks = false, $newer = false)
+	{
+		Session::put( 'prev-page-home', ['weeks' => $weeks, 'newer' => $newer] );
+	}
+
 	private function getAnnouncements()
 	{
 		return Announcement::ofTheDay()->get();
@@ -16,6 +21,7 @@ class HomeController extends BaseController {
 
 	public function showHomework()
 	{
+		$this->setPreviousPage();
 		$homework = $this->homework->currentWeek();
 
 		return View::make('home')
@@ -27,6 +33,8 @@ class HomeController extends BaseController {
 
 	public function older($weeks = 1)
 	{
+		$this->setPreviousPage($weeks);
+
 		$homework = $this->homework->past($weeks);
 		return View::make('home')
 			->with('title', 'Inholland Huiswerk App')
@@ -37,6 +45,7 @@ class HomeController extends BaseController {
 
 	public function newer($weeks = 1)
 	{
+		$this->setPreviousPage($weeks, true);
 
 		$homework = $this->homework->future($weeks);
 		return View::make('home')
