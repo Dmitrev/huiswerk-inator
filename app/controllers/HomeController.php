@@ -37,11 +37,12 @@ class HomeController extends BaseController {
 
 	public function newer($weeks = 1)
 	{
+
 		$homework = $this->homework->future($weeks);
 		return View::make('home')
 			->with('title', 'Inholland Huiswerk App')
 			->with('newer', $weeks)
 			->with('homework', $homework)
-			->with('announcement', $this->getAnnouncement());
+			->with('announcements', $this->getAnnouncements());
 	}
 }
