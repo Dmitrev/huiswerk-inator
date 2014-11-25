@@ -70,3 +70,11 @@ div.homework-item{
 #nav #nav-homework{ color: #BDFF19;}
 #nav #nav-settings{ color: #7AE4FF; }
 #nav #nav-logout{color: #FFF600;}
+
+.label{
+  font-size:0.8em;
+}
+
+.big-label{
+  font-size:1em;
+}

@@ -48,4 +48,16 @@ class Str {
 
     }
 
+    public function dayOfWeek($short = true)
+    {
+      $days =  Config::get('days');
+      if( !array_key_exists($this->string, $days))
+        return NULL;
+
+      if( $short )
+        return $days[$this->string]['short'];
+      else
+        return $days[$this->string]['full'];
+    }
+
 }

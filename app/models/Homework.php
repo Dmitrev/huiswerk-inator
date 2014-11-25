@@ -6,7 +6,7 @@ use Util\Date;
 class Homework extends Model {
 
     protected $table = 'homework';
-    protected $appends = ['deadline_day', 'deadline_month', 'deadline_friendly', 'user_done'];
+    protected $appends = ['deadline_day', 'deadline_month', 'deadline_friendly', 'user_done', 'deadline_dayofweek', 'deadline_fulldayofweek'];
 
 
 
@@ -79,6 +79,22 @@ class Homework extends Model {
         $str = new Str($date);
 
         return $str->objectToFriendlyDate();
+    }
+
+    public function getDeadlineDayofweekAttribute()
+    {
+      $date = $this->getDate();
+      $str = new Str($date->dayOfWeek);
+
+      return $str->dayOfWeek();
+    }
+
+    public function getDeadlineFulldayofweekAttribute()
+    {
+      $date = $this->getDate();
+      $str = new Str($date->dayOfWeek);
+
+      return $str->dayOfWeek(false);
     }
 
     public function scopeGetList($query)

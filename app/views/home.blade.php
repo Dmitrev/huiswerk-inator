@@ -37,7 +37,7 @@
 
             <tr @if( $item->user_done ) class="success" @endif>
                 <td>
-                    <span class="label label-danger">{{$item->deadline_day}} {{$item->deadline_month}}</span>
+                    <span class="label label-danger">{{$item->deadline_dayofweek}} {{$item->deadline_day}} {{$item->deadline_month}}</span>
 
                 </td>
                 <td>
