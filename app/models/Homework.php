@@ -49,7 +49,7 @@ class Homework extends Model {
 
     public function getHomeworkList($query, $values){
       return $query
-          ->with(['subject', 'done'])
+          ->with(['subject', 'done', 'comments'])
           ->orderBy('deadline', 'ASC')
           ->where('deadline', '>=', $values['start'])
           ->where('deadline', '<', $values['end'])
@@ -101,6 +101,10 @@ class Homework extends Model {
       return in_array( Auth::user()->id, $this->done->lists('user_id') );
     }
 
+    public function comments()
+    {
+      return $this->hasMany('Comment', 'homework_id', 'id');
+    }
 
 
 }

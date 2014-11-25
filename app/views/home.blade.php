@@ -31,6 +31,9 @@
             <tr @if( $item->user_done ) class="success" @endif>
                 <td>
                     <span class="label label-danger">{{$item->deadline_day}} {{$item->deadline_month}}</span>
+                    @if( isset($item->comments) && $item->comments->count() > 0)
+                      <i class="fa fa-comment"></i> {{$item->comments->count()}}
+                    @endif
                 </td>
                 <td>
                     <div>
@@ -38,6 +41,9 @@
                         <a href="{{URL::route('homework', [$item->id])}}">
                             @if($item->user_done) <i class="fa fa-check"></i> @endif {{{$item->title}}}
                         </a>
+
+
+
                     </div>
                 </td>
             </tr>
