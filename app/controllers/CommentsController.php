@@ -30,8 +30,9 @@ class CommentsController extends BaseController{
   {
     $comment = Comment::findOrFail($id);
 
-    if( $this->hasPermission($comment) )
+    if( !$this->hasPermission($comment) )
       return App::abort(403);
+
 
     return View::make('comment-edit')
       ->with('title', 'Je reactie bewerken')
@@ -45,7 +46,7 @@ class CommentsController extends BaseController{
 
     $comment = Comment::findOrFail($input['id']);
 
-    if( $this->hasPermission($comment) )
+    if( !$this->hasPermission($comment) )
       return App::abort(403);
 
     $v = new EditComment($input);
@@ -65,15 +66,20 @@ class CommentsController extends BaseController{
 
   private function hasPermission($comment)
   {
-    return ( Auth::user()->id != $comment->user_id
-        || !Auth::user()->has('admin') );
+    if( Auth::user()->id === $comment->user_id
+        || Auth::user()->has('admin') )
+      {
+        return true;
+      }
+
+      return false;
   }
 
   public function confirmDelete($id)
   {
     $comment = Comment::getId($id);
 
-    if( $this->hasPermission($comment) )
+    if( !$this->hasPermission($comment) )
       return App::abort(403);
 
 
@@ -87,7 +93,7 @@ class CommentsController extends BaseController{
   {
     $comment = Comment::findOrFail( Input::get('comment_id') );
 
-    if( $this->hasPermission($comment) )
+    if( !$this->hasPermission($comment) )
       return App::abort(403);
 
     $redirect_url = URL::route('homework', [$comment->homework_id]);
