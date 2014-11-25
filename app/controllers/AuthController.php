@@ -5,7 +5,7 @@ class AuthController extends BaseController {
     public function showLoginForm()
     {
         return View::make('login')
-            ->with('title', 'Login op Inholland Huiswerk App');
+            ->with('title', 'Login op Huiswerk Inator');
     }
 
     public function submitLoginCredentials()

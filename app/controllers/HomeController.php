@@ -25,7 +25,7 @@ class HomeController extends BaseController {
 		$homework = $this->homework->currentWeek();
 
 		return View::make('home')
-			->with('title', 'Inholland Huiswerk App')
+			->with('title', 'Huiswerk Inator')
 			->with('homework', $homework)
 			->with('announcements', $this->getAnnouncements());
 	}
@@ -37,7 +37,7 @@ class HomeController extends BaseController {
 
 		$homework = $this->homework->past($weeks);
 		return View::make('home')
-			->with('title', 'Inholland Huiswerk App')
+			->with('title', 'Huiswerk Inator')
 			->with('older', $weeks)
 			->with('homework', $homework)
 			->with('announcements', $this->getAnnouncements());
@@ -49,7 +49,7 @@ class HomeController extends BaseController {
 
 		$homework = $this->homework->future($weeks);
 		return View::make('home')
-			->with('title', 'Inholland Huiswerk App')
+			->with('title', 'Huiswerk Inator')
 			->with('newer', $weeks)
 			->with('homework', $homework)
 			->with('announcements', $this->getAnnouncements());
