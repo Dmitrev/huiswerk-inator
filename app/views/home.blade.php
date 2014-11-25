@@ -18,6 +18,12 @@
     {{--<a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>--}}
     <div class="wrapper">
       @include('common.home-nav')
+
+
+    @if( $homework->count() === 0)
+      @include('common.warning', ['message' => 'Er is geen huiswerk voor deze week'])
+    @else
+
     <table class="table table">
         <thead>
             <tr>
@@ -26,6 +32,7 @@
             </tr>
         </thead>
         <tbody>
+
         @foreach( $homework as $item )
 
             <tr @if( $item->user_done ) class="success" @endif>
@@ -51,7 +58,7 @@
         @endforeach
         </tbody>
     </table>
-
+    @endif
     </div>
 
 
