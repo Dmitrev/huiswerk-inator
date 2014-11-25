@@ -1,5 +1,5 @@
 <?php namespace Validator;
-use Hash, User;
+use Hash, User, Str;
 class AccountSecurity extends Validator{
 
   protected $rules = [
