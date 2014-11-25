@@ -4,7 +4,7 @@
 
     @include('common.error')
     @include('common.success')
-    <h1>Huiswerk App</h1>
+    <h1>Huiswerk Inator</h1>
     {{Form::open( ['route'=>'validate', 'class' => 'form-horizontal', 'role' => 'form'])}}
         <div class="form-group">
             {{Form::label('username', 'Gebruikersnaam: ', ['class' => 'col-sm-2 control-label'])}}
