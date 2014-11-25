@@ -1,5 +1,5 @@
 <?php namespace Validator;
-use Homework;
+use Homework, Auth;
 
 class AddHomework extends Validator{
   protected $rules = [
@@ -16,6 +16,7 @@ class AddHomework extends Validator{
     $homework->subject_id = $this->get('subject_id');
     $homework->content = $this->get('content');
     $homework->deadline = $this->get('deadline_submit');
+    $homework->author = Auth::user()->id;
     $homework->save();
   }
 }

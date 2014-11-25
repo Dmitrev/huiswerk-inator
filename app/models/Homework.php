@@ -18,7 +18,7 @@ class Homework extends Model {
     }
 
     public function scopeGetId($query, $id){
-      return $query->with(['subject', 'done'])->findOrFail($id);
+      return $query->with(['subject', 'done', 'user'])->findOrFail($id);
     }
 
     public function scopeCurrentWeek($query)
@@ -120,6 +120,11 @@ class Homework extends Model {
     public function comments()
     {
       return $this->hasMany('Comment', 'homework_id', 'id');
+    }
+
+    public function user()
+    {
+      return $this->belongsTo('User', 'author', 'id');
     }
 
 
