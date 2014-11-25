@@ -17,14 +17,18 @@
     {{Form::submit('Reactie plaatsen', ['class' => 'btn btn-primary btn-block'])}}
   </div>
   {{Form::close()}}
-  <h2>Reacties</h2>
   @if(isset($comments))
+  <h2>Reacties</h2>
+
+    @if( $comments->count() === 0)
+      <p>Er zijn geen reacties geplaatst</p>
+    @else
     @foreach($comments as $comment)
     <div class="comment-wrapper">
-      <strong>{{$comment->user->fullname}}</strong>
+      <strong>{{{$comment->user->fullname}}}</strong>
       <div id="comment-{{$comment->id}}" class="panel panel-default">
         <div class="panel-body">
-          {{$comment->body}}
+          {{ Util\Str::enters( e($comment->body)) }}
         </div>
 
       </div>
@@ -37,6 +41,7 @@
       @endif
     </div>
     @endforeach
+  @endif
   @endif
 </div>
 @endif

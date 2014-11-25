@@ -22,9 +22,9 @@
     <tbody>
       @foreach( $announcements as $announcement )
         <tr>
-          <td><a href="{{URL::route('admin-announcement.show', [$announcement->id])}}">{{$announcement->title}}</a></td>
-          <td>{{$announcement->friendly_start_date}}</td>
-          <td>{{$announcement->friendly_end_date}}</td>
+          <td><a href="{{URL::route('admin-announcement.show', [$announcement->id])}}">{{{$announcement->title}}}</a></td>
+          <td>{{{$announcement->friendly_start_date}}}</td>
+          <td>{{{$announcement->friendly_end_date}}}</td>
         </tr>
       @endforeach
     </tbody>

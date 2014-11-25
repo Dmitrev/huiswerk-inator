@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>Bevestig verwijdering</h1>
-  <p>Weet je zeker dat je de melding <strong>{{$announcement->title}}</strong> witlt verwijderen?</p>
+  <p>Weet je zeker dat je de melding <strong>{{{$announcement->title}}}</strong> witlt verwijderen?</p>
 
   {{Form::open(['route' => 'admin-announcement.delete'])}}
   <input type="hidden" name="id" value="{{$announcement->id}}">

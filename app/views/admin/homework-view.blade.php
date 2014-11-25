@@ -19,9 +19,9 @@
     <tbody>
       @foreach($homework as $item)
         <tr>
-          <td><a href="{{URL::route('admin-homework.show',[$item->id])}}">{{$item->title}}</a></td>
-          <td>{{$item->subject->name}}</td>
-          <td>{{$item->deadline_friendly}}</td>
+          <td><a href="{{URL::route('admin-homework.show',[$item->id])}}">{{{$item->title}}}</a></td>
+          <td>{{{$item->subject->name}}}</td>
+          <td>{{{$item->deadline_friendly}}}</td>
         </tr>
       @endforeach
     </tbody>

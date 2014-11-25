@@ -3,11 +3,15 @@
 @section('content')
   <dl>
     <dt>Gebruiker: </dt>
-    <dd>{{$comment->user->fullname}}</dd>
+    <dd>{{{$comment->user->fullname}}}</dd>
     <dt>Huiswerk: </dt>
-    <dd>{{$comment->homework->title}}</dd>
+    <dd>{{{$comment->homework->title}}}</dd>
     <dt>Comment: </dt>
-    <dd>{{$comment->body}}</dd>
+    <dd>
+      <div class="well">
+        {{ Utl\Str::enters( e( $comment->body ) ) }}
+      </div>
+    </dd>
   </dl>
 
   <p>

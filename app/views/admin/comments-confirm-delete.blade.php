@@ -2,13 +2,13 @@
 
 @section('content')
 <h1>Bevestig verwijdering</h1>
-<p>Weet je zeker dat je de comment van <strong>{{$comment->user->fullname}}</strong>
-  op <strong>{{$comment->homework->title}}</strong> Wilt verwijderen?
+<p>Weet je zeker dat je de comment van <strong>{{{$comment->user->fullname}}}</strong>
+  op <strong>{{{$comment->homework->title}}}</strong> Wilt verwijderen?
 </p>
 
 <strong>Reactie: </strong>
 <div class="well">
-  {{$comment->body}}
+  {{{ Util\Str::enter( e( $comment->body )) }}
 </div>
 
 <div class="form-group">

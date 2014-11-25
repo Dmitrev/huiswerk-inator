@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>Bevestig verwijdering</h1>
-  <p>Weet je zeker dat je het item <strong>{{$homework->title}}</strong> witlt verwijderen?</p>
+  <p>Weet je zeker dat je het item <strong>{{{$homework->title}}}</strong> witlt verwijderen?</p>
 
   {{Form::open(['route' => 'admin-homework.delete'])}}
   <input type="hidden" name="homework_id" value="{{$homework->id}}">

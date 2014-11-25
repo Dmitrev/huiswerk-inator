@@ -51,15 +51,15 @@
       <tr>
         <td>
           <a href="{{URL::route('admin-users.show', [$user->id] )}}">
-            {{$user->fullname}}
+            {{{$user->fullname}}}
           </a>
         </td>
         <td>
           <a href="{{URL::route('admin-users.show', [$user->id] )}}">
-            {{$user->username}}
+            {{{$user->username}}}
           </a>
         </td>
-        <td>{{$user->userGroup->getName()}}</td>
+        <td>{{{$user->userGroup->getName()}}}</td>
       </tr>
   @endforeach
     </tbody>

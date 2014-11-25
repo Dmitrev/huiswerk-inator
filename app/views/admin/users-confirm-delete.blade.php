@@ -4,8 +4,8 @@
   <h1>Bevestig verwijdering account</h1>
 
   <p>
-    Weet je zeker dat je het account <strong>{{$user->username}}</strong> van
-    gebruiker <strong>{{$user->fullname}}</strong> wilt verwijderen?
+    Weet je zeker dat je het account <strong>{{{$user->username}}}</strong> van
+    gebruiker <strong>{{{$user->fullname}}}</strong> wilt verwijderen?
   </p>
 
   {{Form::open(['route' => 'admin-users.delete'])}}

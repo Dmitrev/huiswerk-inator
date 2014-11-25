@@ -7,7 +7,7 @@
   {{Form::open(['route' => 'submit-secret-question'])}}
   <div class="form-group">
     {{Form::hidden('user_id', $user->id)}}
-    <p>{{$user->secret_question}}</p>
+    <p>{{{$user->secret_question}}}</p>
     {{Form::label('answer', 'Antwoord:')}}
     {{Form::password('answer', ['class' => 'form-control'])}}
   </div>

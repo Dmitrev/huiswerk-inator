@@ -23,7 +23,7 @@
 
   <div class="form-group">
     {{Form::label('username', 'Gebruikersnaam: ')}}
-    <p class="form-control-static">{{$user->username}}</p>
+    <p class="form-control-static">{{{$user->username}}}</p>
   </div>
 
   <div class="form-group">

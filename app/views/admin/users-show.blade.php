@@ -5,11 +5,11 @@
 
   <dl>
     <dt>Naam: </dt>
-    <dd>{{$user->fullname}}</dd>
+    <dd>{{{$user->fullname}}}</dd>
     <dt>Gebruikersnaam: </dt>
-    <dd>{{$user->username}}</dd>
+    <dd>{{{$user->username}}}</dd>
     <dt>Groep: </dt>
-    <dd>{{$user->userGroup->getName()}}</dd>
+    <dd>{{{$user->userGroup->getName()}}}</dd>
   </dl>
 
   <p>

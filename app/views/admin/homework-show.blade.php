@@ -3,11 +3,11 @@
 @section('content')
   <dl>
     <dt>Titel: </dt>
-    <dd>{{$homework->title}}</dd>
+    <dd>{{{$homework->title}}}</dd>
     <dt>Vak: </dt>
-    <dd>{{$homework->subject->name}}</dd>
+    <dd>{{{$homework->subject->name}}}</dd>
     <dt>Deadline: </dt>
-    <dd>{{$homework->deadline_friendly}}</dd>
+    <dd>{{{$homework->deadline_friendly}}}</dd>
   </dl>
 
   <p>
