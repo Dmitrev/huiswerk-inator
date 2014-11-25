@@ -14,7 +14,7 @@
         <link rel="apple-touch-icon-precomposed" href="{{URL::asset('favicon.png')}}">
         <link rel="icon" href="{{URL::asset('favicon.ico')}}" type="image/x-icon" />
 
-        {{HTML::style('css/main.css?v1')}}
+        {{HTML::style('css/main.css?v1.0')}}
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
