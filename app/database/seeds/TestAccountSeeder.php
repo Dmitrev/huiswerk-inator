@@ -12,14 +12,14 @@ class TestAccountSeeder extends Seeder {
         $user->save();
 
 
-        for( $i = 0; $i < 20; $i++)
-        {
-          $user = new User;
-          $user->username = 'test'.$i;
-          $user->password = Hash::make('test');
-          $user->fullname = 'Test Account'.$i;
-          $user->group = 0;
-          $user->save();
-        }
+        // for( $i = 0; $i < 20; $i++)
+        // {
+        //   $user = new User;
+        //   $user->username = 'test'.$i;
+        //   $user->password = Hash::make('test');
+        //   $user->fullname = 'Test Account'.$i;
+        //   $user->group = 0;
+        //   $user->save();
+        // }
     }
 }
