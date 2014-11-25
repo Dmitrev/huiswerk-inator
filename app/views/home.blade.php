@@ -6,9 +6,9 @@
     @foreach( $announcements as $announcement)
       <div class="alert alert-info" role="alert">
         <div class="row">
-        <div class="col-xs-8"><i class="fa fa-bullhorn"></i> {{$announcement->title}}</div>
-        <div class="col-xs-4">
-          <a class="btn btn-default" href="{{URL::route('announcement', [$announcement->id])}}">Bekijken</a>
+        <div class="col-xs-7"><i class="fa fa-bullhorn"></i> {{$announcement->title}}</div>
+        <div class="col-xs-5">
+          <a class="btn btn-warning" href="{{URL::route('announcement', [$announcement->id])}}">Bekijken</a>
         </div>
       </div>
       </div>
@@ -31,13 +31,14 @@
             <tr @if( $item->user_done ) class="success" @endif>
                 <td>
                     <span class="label label-danger">{{$item->deadline_day}} {{$item->deadline_month}}</span>
-                    @if( isset($item->comments) && $item->comments->count() > 0)
-                      <i class="fa fa-comment"></i> {{$item->comments->count()}}
-                    @endif
+
                 </td>
                 <td>
                     <div>
                         <span class="label label-default">{{$item->subject->abbreviation}}</span>
+                        @if( isset($item->comments) && $item->comments->count() > 0)
+                          <span class="label label-default"><i class="fa fa-comment"></i> {{$item->comments->count()}}</span>
+                        @endif
                         <a href="{{URL::route('homework', [$item->id])}}">
                             @if($item->user_done) <i class="fa fa-check"></i> @endif {{{$item->title}}}
                         </a>

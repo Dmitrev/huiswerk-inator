@@ -4,5 +4,7 @@
   @include('common.back')
   <h1>{{{$announcement->title}}}</h1>
 
-  {{ Util\Str::enters( e( $announcement->message ) ) }}
+  <div class="well">
+    {{ Util\Str::enters( e( $announcement->message ) ) }}
+  </div>
 @stop
