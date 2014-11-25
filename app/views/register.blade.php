@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('templates.login')
 
 @section('content')
     <a href="{{URL::route('login')}}" class="btn btn-default">
@@ -6,7 +6,7 @@
         Terug naar Login
     </a>
     <h1>Account maken</h1>
-        
+
     @include('common.error')
     {{Form::open(['role' => 'form', 'route' => 'store-account'])}}
         <div class="form-group">

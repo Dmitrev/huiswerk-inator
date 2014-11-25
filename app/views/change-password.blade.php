@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('templates.login')
 
 @section('content')
   <h1>Nieuw wachtwoord kiezen</h1>
