@@ -5,8 +5,8 @@
         <title>{{$title or '- No title set -'}}</title>
         <!-- Include bootstrap -->
         {{HTML::style('plugins/bootstrap/css/bootstrap.min.css')}}
-        {{HTML::style('plugins/pickadate/themes/default.css')}}
-        {{HTML::style('plugins/pickadate/themes/default.date.css')}}
+        {{HTML::style('plugins/pickdate/themes/default.css')}}
+        {{HTML::style('plugins/pickdate/themes/default.date.css')}}
 
 
         <!-- Font awesome -->
@@ -27,8 +27,8 @@
             <!--bootstrap js-->
             {{HTML::script('plugins/jquery/jquery.min.js')}}
             {{HTML::script('plugins/bootstrap/js/bootstrap.min.js')}}
-            {{HTML::script('plugins/pickadate/compressed/picker.js')}}
-            {{HTML::script('plugins/pickadate/compressed/picker.date.js')}}
+            {{HTML::script('plugins/pickdate/compressed/picker.js')}}
+            {{HTML::script('plugins/pickdate/compressed/picker.date.js')}}
             {{HTML::script('js/datepicker.js')}}
 
             @yield('js')
