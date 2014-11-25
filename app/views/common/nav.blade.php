@@ -20,10 +20,12 @@
     <li><a id="nav-logout" class="btn btn-info" href="{{URL::route('logout')}}"><i class="fa fa-sign-out"></i></a></li>
 
 
+    @if( Auth::check() && Auth::user()->has('admin') )
     <li>
       <a href="{{URL::route('admin-dashboard')}}" class="btn btn-primary">
         <i class="fa fa-tachometer"></i>
       </a>
     </li>
+    @endif
   </ul>
 </nav>
