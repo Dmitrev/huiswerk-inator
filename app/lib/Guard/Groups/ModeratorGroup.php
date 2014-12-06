@@ -3,7 +3,4 @@
 class ModeratorGroup extends UserGroup{
   protected $name = 'Moderators';
 
-  protected $permissions = array(
-    'admin'
-  );
 }

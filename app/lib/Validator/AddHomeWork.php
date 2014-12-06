@@ -2,12 +2,7 @@
 use Homework, Auth;
 
 class AddHomework extends Validator{
-  protected $rules = [
-      'title' => 'required',
-      'subject_id' => 'required|exists:subjects,id',
-      'content' => 'required',
-      'deadline_submit' => 'required'
-  ];
+  protected $config = 'homework';
 
   public function save()
   {

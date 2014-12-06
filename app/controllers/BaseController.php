@@ -15,4 +15,12 @@ class BaseController extends Controller {
 		}
 	}
 
+	/**
+	 * Show "page not found" view with status code "404"
+	 */
+	protected function notFound()
+	{
+		return App::abort(404);
+	}
+
 }

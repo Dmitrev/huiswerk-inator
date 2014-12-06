@@ -44,6 +44,26 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'HomeworkController@showAddHomeworkForm'
 	]);
 
+	Route::get('homework/{id}/edit', [
+		'as' => 'edit-homework',
+		'uses' => 'HomeworkController@editForm'
+	]);
+
+	Route::put('homework/{id}',[
+		'as' => 'store-homework',
+		'uses' => 'HomeworkController@store'
+	]);
+
+	Route::get('homework/{id}/delete', [
+		'as' => 'delete-homework',
+		'uses' => 'HomeworkController@delete'
+	]);
+
+	Route::delete('homework/{id}',[
+		'as' => 'destroy-homework',
+		'uses' => 'HomeworkController@destory'
+	]);
+
 	Route::post('homework/add', [
 		'as' => 'create-homework',
 		'uses' => 'HomeworkController@createHomework'

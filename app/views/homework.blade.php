@@ -15,6 +15,15 @@
           <i class="fa fa-user"></i> {{{$item->user->fullname or 'Onbekende Gebruiker'}}}
         </span></li>
     </ul>
+
+    @if( Auth::user()->id === $item->author || Auth::user()->has('edit-homework'))
+      <a href="{{URL::route('edit-homework', [$item->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Bewerken</a>
+    @endif
+
+    @if( Auth::user()->id === $item->author || Auth::user()->has('delete-homework'))
+      <a href="{{URL::route('delete-homework', [$item->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i> Verwijderen</a>
+    @endif
+
     <h2>Beschrijving</h2>
     <div class="well">
       {{ Util\Str::enters( e($item->content) )}}

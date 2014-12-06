@@ -20,13 +20,13 @@ class GroupManager{
   public function getGroup()
   {
 
-
     // Get groups config file (app/config/groups.php)
     $groups = Config::get('groups');
 
 
     if( isset( $this->user->group )
-      && array_key_exists($this->user->group, $groups) )
+      && array_key_exists($this->user->group, $groups)
+      && array_key_exists('class', $groups[$this->user->group]))
     {
       return $this->getGroupObject( $groups[ $this->user->group ] );
     }
@@ -38,9 +38,14 @@ class GroupManager{
 
   }
 
-  public function getGroupObject($class){
+  public function getGroupObject($object){
     //prepend correct namespace before class
-    $class = $this->groupNamespace.$class;
+
+    if( !array_key_exists('class', $object) ){
+      return $this->getDefaultGroup();
+    }
+
+    $class = $this->groupNamespace.$object['class'];
 
     if( !class_exists( $class ) )
     {
@@ -58,7 +63,7 @@ class GroupManager{
       return $this->getDefaultGroup();
     }
 
-    return new $class;
+    return new $class($object);
   }
 
   public function getDefaultGroup(){
@@ -85,10 +90,11 @@ class GroupManager{
     $list = [];
     $groups = Config::get('groups');
 
-    foreach( $groups as $id => $class ){
-      $object = $this->getGroupObject($class);
-
-      $list[$id] = $object->getName();
+    foreach( $groups as $id => $object ){
+      if( array_key_exists('class', $object)){
+        $object = $this->getGroupObject($object);
+        $list[$id] = $object->getName();
+      }
     }
 
     return $list;
