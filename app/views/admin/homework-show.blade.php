@@ -5,7 +5,12 @@
     <dt>Titel: </dt>
     <dd>{{{$homework->title}}}</dd>
     <dt>Vak: </dt>
-    <dd>{{{$homework->subject->name}}}</dd>
+    <dd>
+      @if(is_object($homework->subject))
+        {{{$homework->subject->name}}}
+      @else
+        <em>Verwijderd vak</em>
+      @endif</dd>
     <dt>Deadline: </dt>
     <dd>{{{$homework->deadline_friendly}}}</dd>
   </dl>

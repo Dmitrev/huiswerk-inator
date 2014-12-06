@@ -20,7 +20,13 @@
       @foreach($homework as $item)
         <tr>
           <td><a href="{{URL::route('admin-homework.show',[$item->id])}}">{{{$item->title}}}</a></td>
-          <td>{{{$item->subject->name}}}</td>
+          <td>
+            @if( is_object($item->subject))
+            {{{$item->subject->name}}}
+            @else
+              <em>verwijderd vak</em>
+            @endif
+          </td>
           <td>{{{$item->deadline_friendly}}}</td>
         </tr>
       @endforeach

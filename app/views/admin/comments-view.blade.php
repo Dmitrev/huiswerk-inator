@@ -15,8 +15,18 @@
       @foreach($comments as $comment)
         <tr>
           <td><a href="{{URL::route('admin-comments.show', [$comment->id])}}">{{{substr($comment->body, 0, 20)}}}</a></td>
-          <td>{{{$comment->user->fullname}}}</td>
-          <td>{{{$comment->homework->title}}}</td>
+          <td>@if( is_object($comment->user))
+            {{{$comment->user->fullname}}}
+            @else
+              <em>Verwijderde gebruiker</em>
+            @endif</td>
+          <td>
+
+            @if( is_object($comment->homework))
+            {{{$comment->homework->title}}}
+            @else
+              <em>Verwijderd huiswerk</em>
+            @endif</td>
         </tr>
       @endforeach
     </tbody>

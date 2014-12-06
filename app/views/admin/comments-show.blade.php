@@ -3,13 +3,24 @@
 @section('content')
   <dl>
     <dt>Gebruiker: </dt>
-    <dd>{{{$comment->user->fullname}}}</dd>
+    <dd>
+      @if( is_object($comment->user))
+      {{{$comment->user->fullname}}}
+      @else
+      <em>Verwijderde gebruiker</em>
+      @endif
+      </dd>
     <dt>Huiswerk: </dt>
-    <dd>{{{$comment->homework->title}}}</dd>
+    <dd>
+      @if(is_object($comment->homework))
+        {{{$comment->homework->title}}}
+      @else
+        <em>Verwijdered huiswerk</em>
+      @endif</dd>
     <dt>Comment: </dt>
     <dd>
       <div class="well">
-        {{ Utl\Str::enters( e( $comment->body ) ) }}
+        {{ Util\Str::enters( e( $comment->body ) ) }}
       </div>
     </dd>
   </dl>

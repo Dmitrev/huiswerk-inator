@@ -2,8 +2,19 @@
 
 @section('content')
 <h1>Bevestig verwijdering</h1>
-<p>Weet je zeker dat je de comment van <strong>{{{$comment->user->fullname}}}</strong>
-  op <strong>{{{$comment->homework->title}}}</strong> Wilt verwijderen?
+<p>Weet je zeker dat je de comment van <strong>
+  @if( is_object($comment->user))
+    {{{$comment->user->fullname}}}
+  @else
+    <em>verwijderde gebruiker</em>
+  @endif</strong>
+  op <strong>
+    @if(is_object($comment->homework))
+    {{{$comment->homework->title}}}
+    @else
+    <em>verwijderd huiswerk</em>
+    @endif
+    </strong> Wilt verwijderen?
 </p>
 
 <strong>Reactie: </strong>
