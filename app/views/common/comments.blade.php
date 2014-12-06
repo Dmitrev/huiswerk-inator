@@ -25,7 +25,7 @@
     @else
     @foreach($comments as $comment)
     <div class="comment-wrapper">
-      <strong>{{{$comment->user->fullname}}}</strong>
+      <strong>{{{$comment->user->fullname or 'Onbekende gebruiker'}}}</strong>
       <div id="comment-{{$comment->id}}" class="panel panel-default">
         <div class="panel-body">
           {{ Util\Str::enters( e($comment->body)) }}

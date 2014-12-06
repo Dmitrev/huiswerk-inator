@@ -71,6 +71,11 @@ div.homework-item{
 #nav #nav-settings{ color: #7AE4FF; }
 #nav #nav-logout{color: #FFF600;}
 
+/* Zorgen dat de labels niet op elkaar worden gedrukt */
+#homework-info li{
+  margin: 1em 0;
+}
+
 .label{
   font-size:0.8em;
 }

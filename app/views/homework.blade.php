@@ -4,12 +4,15 @@
     @include('common.i-back')
     <h1>{{{$item->title}}}</h1>
 
-    <ul class="list-inline">
-        <li><span class="label big-label label-info">{{{$item->subject->name}}}</span></li>
+    <ul id="homework-info" class="list-unstyled">
+        <li>
+            <span class="label big-label label-info">{{{$item->subject->name or 'Onbekend vak' }}}</span>
+
+         </li>
         <li><span class="label big-label label-danger">{{{ $item->deadline_fulldayofweek}}} {{{$item->deadline_friendly}}}</span></li>
 
         <li><span class="label big-label label-primary">
-          <i class="fa fa-user"></i> {{{$item->user->fullname or 'onbekend'}}}
+          <i class="fa fa-user"></i> {{{$item->user->fullname or 'Onbekende Gebruiker'}}}
         </span></li>
     </ul>
     <h2>Beschrijving</h2>

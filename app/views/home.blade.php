@@ -42,7 +42,11 @@
                 </td>
                 <td>
                     <div>
+                      @if( is_object($item->subject))
                         <span class="label label-default">{{{$item->subject->abbreviation}}}</span>
+                        @else
+                         <span class="label label-warning">?</span>
+                        @endif
                         @if( isset($item->comments) && $item->comments->count() > 0)
                           <span class="label label-default"><i class="fa fa-comment"></i> {{$item->comments->count()}}</span>
                         @endif

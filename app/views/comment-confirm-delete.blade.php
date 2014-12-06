@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>Bevestig verwijdering</h1>
-  <p>Weet je zeker dat je jouw reactie op <strong>{{$comment->homework->title}}</strong>
+  <p>Weet je zeker dat je jouw reactie op <strong>{{$comment->homework->title or 'verwijderd huiswerk'}}</strong>
     wilt verwijderen?
   </p>
 
