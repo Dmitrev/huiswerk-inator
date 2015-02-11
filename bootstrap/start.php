@@ -26,7 +26,10 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('dmitri-ubuntu'),
+	'local' => array(
+        'dmitri-ubuntu',
+        'dmitri-desktop-ubuntu'
+    ),
 
 
 ));
