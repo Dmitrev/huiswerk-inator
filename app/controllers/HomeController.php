@@ -22,7 +22,8 @@ class HomeController extends BaseController {
 	public function showHomework()
 	{
 		$this->setPreviousPage();
-		$homework = $this->homework->currentWeek();
+		$homework = $this->homework->paginate(10);
+
 
 		return View::make('home')
 			->with('title', 'Huiswerk Inator')
@@ -54,4 +55,11 @@ class HomeController extends BaseController {
 			->with('homework', $homework)
 			->with('announcements', $this->getAnnouncements());
 	}
+
+	private function jsonHomework($homework){
+
+		return View::make('common.homework-rows')
+			->with('homework', $homework);
+	}
+
 }
