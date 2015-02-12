@@ -37,7 +37,9 @@
         <body>
 
             @yield('template')
-
+            <script type="text/javascript">
+                var base = "{{URL::to('/')}}";
+            </script>
             <!--bootstrap js-->
             {{HTML::script('plugins/jquery/jquery.min.js')}}
             {{HTML::script('plugins/bootstrap/js/bootstrap.min.js')}}

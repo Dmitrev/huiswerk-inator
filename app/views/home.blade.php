@@ -31,18 +31,23 @@
                 <th class="col-xs-10">Huiswerk / Vak</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="homework-container">
             @include('common.homework-rows', ['homework' => $homework])
         </tbody>
     </table>
     @endif
     </div>
-
-
-
+    @if( $homework->getCurrentPage() < $homework->getLastPage() )
+        <button id="load-homework" class="btn btn-primary">Meer huiswerk tonen</button>
+    @endif
 @stop
 
-
+@section('js')
+    <script type="text/javascript">
+        var currentPage = {{ $homework->getCurrentPage() }};
+    </script>
+    {{HTML::script('js/timeline.js')}}
+@stop
 {{--<div class="row">
             <div class="homework-item">
                 <div class="col-xs-2">

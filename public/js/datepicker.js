@@ -19,8 +19,9 @@ $(function(){
     });
 
     var picker = $input.pickadate('picker');
-
-    picker.set('disable', [
-      1,7
-    ]);
+    if( typeof picker !== 'undefined') {
+        picker.set('disable', [
+            1, 7
+        ]);
+    }
 });
