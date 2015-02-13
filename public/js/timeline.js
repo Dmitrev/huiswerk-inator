@@ -3,6 +3,8 @@
 
         var container = $('#homework-container');
         var loadBtn = $('#load-homework');
+        var endReachedText = $('#end-reached');
+        var originalBtnText = null;
         // We want to start loading content from page 2, since page 1 is always loaded by default
         var nextPage = 2;
 
@@ -26,10 +28,26 @@
             loadBtn.attr('disabled', true);
         }
 
+        function buttonLoading()
+        {
+            disableButton();
+
+            loadBtn.find('i').removeClass('hide');
+            loadBtn.find('span').text( loadBtn.attr('data-loading') );
+        }
+
+        function doneLoading()
+        {
+            enableBtn();
+            loadBtn.find('i').addClass('hide');
+            loadBtn.find('span').text( originalBtnText );
+        }
+
         function loadBtnClick()
         {
 
-            disableButton();
+
+            buttonLoading();
             fetchHomework();
         }
 
@@ -46,10 +64,12 @@
                 {
                     // Increment current page by one
                     nextPage++;
-                    enableBtn();
+                    doneLoading();
 
                     return true;
                 }
+
+                endReached();
         }
 
         function renderHomework(html)
@@ -63,6 +83,17 @@
             if( typeof currentPage !== 'undefined'){
                 nextPage = currentPage + 1;
             }
+
+
+            /* Save original span text, to revert to it later on */
+            originalBtnText = loadBtn.find('span').text();
+        }
+
+        function endReached()
+        {
+            loadBtn.hide();
+            endReachedText.removeClass('hide');
+
         }
 
         $(document).on('click', '#load-homework', loadBtnClick);

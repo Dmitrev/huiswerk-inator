@@ -38,8 +38,17 @@
     @endif
     </div>
     @if( $homework->getCurrentPage() < $homework->getLastPage() )
-        <button id="load-homework" class="btn btn-primary">Meer huiswerk tonen</button>
+        <?php $endReached = false ?>
+        <button id="load-homework" class="btn btn-primary" data-loading="Nieuwe items ophalen..">
+            <i class="fa fa-refresh hide fa-spin"></i>
+            <span>Meer huiswerk tonen</span>
+        </button>
+        @else
+        <?php $endReached = true ?>
     @endif
+
+
+    <p @if( !$endReached) id="end-reached" class="hide" @endif >Geen items meer om te laden..</p>
 @stop
 
 @section('js')
