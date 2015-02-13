@@ -17,7 +17,6 @@
     <h1>@include('common.home-heading')</h1>
     {{--<a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>--}}
     <div class="wrapper">
-      @include('common.home-nav')
 
 
     @if( $homework->count() === 0)
