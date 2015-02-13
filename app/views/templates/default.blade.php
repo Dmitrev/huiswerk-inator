@@ -2,7 +2,7 @@
 
 @section('template')
 @include('common.nav')
-            <div class="container">
+            <div id="container" class="container">
               <div class="row">
                 <div class="col-lg-12">
                     @yield('content')

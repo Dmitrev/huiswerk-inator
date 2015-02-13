@@ -1,31 +1,48 @@
-<nav id="nav" role="navigation">
-  <div id="logo" class="text-center">
-    <img src="{{URL::asset('images/huiswerk-logo.png')}}" alt="Huiswerk Inator Logo">
-   </div>
+<nav class="pushy pushy-left">
   <ul>
     <li>
-      <a class="btn btn-info" href="{{URL::route('home')}}">
+      <a href="{{URL::route('home')}}">
         <i class="fa fa-home"></i>
+        Home
       </a>
     </li>
     <li>
-        <a id="nav-homework" class="btn btn-info" href="{{URL::route('create-homework')}}">
-          <i class="fa fa-plus"></i></i>
-
-        </a>
+      <a id="nav-settings" href="{{URL::route('account')}}">
+        <i class="fa fa-cog"></i>
+        Account
+      </a>
     </li>
-
-
-    <li><a id="nav-settings" class="btn btn-info" href="{{URL::route('account')}}"><i class="fa fa-cog"></i></a></li>
-    <li><a id="nav-logout" class="btn btn-info" href="{{URL::route('logout')}}"><i class="fa fa-sign-out"></i></a></li>
-
-
+    <li><a id="nav-logout" href="{{URL::route('logout')}}">
+        <i class="fa fa-sign-out"></i>
+        Uitloggen
+      </a>
+    </li>
     @if( Auth::check() && Auth::user()->has('admin') )
-    <li>
-      <a href="{{URL::route('admin-dashboard')}}" class="btn btn-primary">
-        <i class="fa fa-tachometer"></i>
-      </a>
-    </li>
+      <li>
+        <a href="{{URL::route('admin-dashboard')}}">
+          <i class="fa fa-tachometer"></i>
+          Admin
+        </a>
+      </li>
     @endif
   </ul>
 </nav>
+
+<div class="site-overlay"></div>
+
+<div class="navigation-bar">
+  <div class="menu-btn-wrap">
+    <a class="menu-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div class="logo-wrap">
+    <i class="fa fa-graduation-cap"></i>
+    Huiswerk Inator
+  </div>
+  <div class="create-homework-wrap">
+    <a href="{{URL::route('create-homework')}}" class="add-btn">
+      <i class="fa fa-plus"></i>
+    </a>
+  </div>
+</div>

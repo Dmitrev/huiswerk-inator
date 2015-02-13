@@ -1,3 +1,42 @@
 /* THEME */
 @import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
 @import "bootstrap";
+
+nav{
+  ul{
+    padding:0;
+    a:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+div.navigation-bar{
+  padding:1em 0 1em 0;
+  color:white;
+  overflow:auto;
+  background: #005569;
+
+  .menu-btn-wrap {
+    @include make-xs-column(2);
+    a.menu-btn {
+      @extend .btn, .btn-primary, .pull-left;
+      font-size: 1.2em !important;
+
+    }
+  }
+
+  .logo-wrap{
+    @include make-xs-column(8);
+    text-align:center;
+    font-size:1.5em;
+  }
+  .create-homework-wrap {
+    @include make-xs-column(2);
+    a.add-btn {
+      @extend .btn, .btn-success, .pull-right;
+      font-size: 1.2em !important;
+    }
+  }
+
+}

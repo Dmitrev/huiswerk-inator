@@ -7,10 +7,11 @@
         {{HTML::style('plugins/bootstrap/css/bootstrap.min.css')}}
         {{HTML::style('plugins/pickdate/themes/default.css')}}
         {{HTML::style('plugins/pickdate/themes/default.date.css')}}
+        {{HTML::style('plugins/pushy/css/pushy.css');}}
 
 
         <!-- Font awesome -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="57x57" href="{{URL::asset('images/favicons/apple-touch-icon-57x57.png')}}">
         <link rel="apple-touch-icon" sizes="114x114" href="{{URL::asset('images/favicons/apple-touch-icon-114x114.png')}}">
         <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('images/favicons/apple-touch-icon-72x72.png')}}">
@@ -43,6 +44,7 @@
             <!--bootstrap js-->
             {{HTML::script('plugins/jquery/jquery.min.js')}}
             {{HTML::script('plugins/bootstrap/js/bootstrap.min.js')}}
+            {{HTML::script('plugins/pushy/js/pushy.min.js')}}
             {{HTML::script('plugins/pickdate/compressed/picker.js')}}
             {{HTML::script('plugins/pickdate/compressed/picker.date.js')}}
             {{HTML::script('js/datepicker.js')}}
