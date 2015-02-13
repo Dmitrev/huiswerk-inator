@@ -99,9 +99,16 @@ class Homework extends Model {
 
     public function scopeGetList($query)
     {
+        /* Ervoor zorgen dat ook de resultaten van vandaag worden opgehaald */
+        $date = Carbon::now();
+        $date->hour = 0;
+        $date->minute = 0;
+        $date->second = 0;
+
       return $query->with('subject')
-        ->orderBy('created_at', 'DESC')
-        ->paginate(15);
+        ->orderBy('deadline', 'ASC')
+          ->where('deadline', '>=', $date->toDateTimeString() )
+       ;
     }
 
     public function done()

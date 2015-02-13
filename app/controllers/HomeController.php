@@ -22,7 +22,8 @@ class HomeController extends BaseController {
 	public function showHomework()
 	{
 		$this->setPreviousPage();
-		$homework = $this->homework->orderBy('deadline', 'ASC')->paginate(3);
+		$homework = $this->homework->getList()
+			->paginate(15);
 
 		/*
 			If request is AJAX, we only want to return a new set rows
