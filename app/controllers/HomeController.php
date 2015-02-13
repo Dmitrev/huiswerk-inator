@@ -9,11 +9,6 @@ class HomeController extends BaseController {
 		$this->homework = $homework;
 	}
 
-	private function setPreviousPage($weeks = false, $newer = false)
-	{
-		Session::put( 'prev-page-home', ['weeks' => $weeks, 'newer' => $newer] );
-	}
-
 	private function getAnnouncements()
 	{
 		return Announcement::ofTheDay()->get();
@@ -21,7 +16,6 @@ class HomeController extends BaseController {
 
 	public function showHomework()
 	{
-		$this->setPreviousPage();
 		$homework = $this->homework->getList()
 			->paginate(15);
 
@@ -40,30 +34,6 @@ class HomeController extends BaseController {
 			->with('announcements', $this->getAnnouncements());
 	}
 
-
-	public function older($weeks = 1)
-	{
-		$this->setPreviousPage($weeks);
-
-		$homework = $this->homework->past($weeks);
-		return View::make('home')
-			->with('title', 'Huiswerk Inator')
-			->with('older', $weeks)
-			->with('homework', $homework)
-			->with('announcements', $this->getAnnouncements());
-	}
-
-	public function newer($weeks = 1)
-	{
-		$this->setPreviousPage($weeks, true);
-
-		$homework = $this->homework->future($weeks);
-		return View::make('home')
-			->with('title', 'Huiswerk Inator')
-			->with('newer', $weeks)
-			->with('homework', $homework)
-			->with('announcements', $this->getAnnouncements());
-	}
 
 	private function jsonHomework($homework){
 

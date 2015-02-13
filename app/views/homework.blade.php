@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-    @include('common.i-back')
+    @include('common.back')
     <h1>{{{$item->title}}}</h1>
 
     <ul id="homework-info" class="list-unstyled">

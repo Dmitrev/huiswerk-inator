@@ -21,31 +21,6 @@ class Homework extends Model {
       return $query->with(['subject', 'done', 'user'])->findOrFail($id);
     }
 
-    public function scopeCurrentWeek($query)
-    {
-        $date = new Date;
-        $values = $date->currentWeek();
-
-        return $this->getHomeworkList($query, $values);
-    }
-
-    public function scopePast($query, $weeks = 1)
-    {
-      $date = new Date;
-      $values = $date->prevWeek($weeks);
-
-      return $this->getHomeworkList($query, $values);
-
-    }
-
-      public function scopeFuture($query, $weeks = 1)
-    {
-      $date = new Date;
-      $values = $date->nextWeek($weeks);
-
-      return $this->getHomeworkList($query, $values);
-
-    }
 
     public function getHomeworkList($query, $values){
       return $query
@@ -105,7 +80,8 @@ class Homework extends Model {
         $date->minute = 0;
         $date->second = 0;
 
-      return $query->with('subject')
+      return $query->with('subject', 'done')
+
         ->orderBy('deadline', 'ASC')
           ->where('deadline', '>=', $date->toDateTimeString() )
        ;

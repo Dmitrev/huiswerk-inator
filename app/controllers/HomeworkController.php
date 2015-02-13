@@ -153,7 +153,8 @@ class HomeworkController extends BaseController {
 
     /**
      * Show form to confirm the deletion of a homework item
-     * @param int $id an existing id in table 'homework'
+     * @param int $id - an existing id in table 'homework'
+     * @return mixed - can either return a 404 Response or a view
      */
     public function delete($id)
     {
@@ -171,7 +172,8 @@ class HomeworkController extends BaseController {
 
     /**
      * Permanently destroys homework item from database
-     * @param $id an existing id in table 'homework'
+     * @param $id - an existing id in table 'homework'
+     * @return mixed - can either return a 404 Response or a view
      */
     public function destory($id)
     {
