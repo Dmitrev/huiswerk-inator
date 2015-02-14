@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             {{Form::label('content', 'Beschrijving: ')}}
-            {{Form::textarea('content', Input::old('content'), ['class' => 'form-control', 'placeholder' => 'content'])}}
+            {{Form::textarea('content', Input::old('content'), [ 'id' => 'summernote', 'class' => 'form-control', 'placeholder' => 'content'])}}
         </div>
         <div class="form-group">
             {{Form::label('deadline', 'Deadline: ')}}
@@ -30,4 +30,19 @@
             {{Form::submit('Toevoegen', ['class' => 'btn btn-success'])}}
         </div>
     {{Form::close()}}
+@stop
+
+@section('js')
+    <script>
+        $('#summernote').summernote({
+            toolbar: [
+                //[groupname, [button list]]
+
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough']],
+
+                ['para', ['ul', 'ol']]
+            ]
+        });
+    </script>
 @stop

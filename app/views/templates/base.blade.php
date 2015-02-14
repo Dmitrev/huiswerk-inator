@@ -8,7 +8,7 @@
         {{HTML::style('plugins/pickdate/themes/default.css')}}
         {{HTML::style('plugins/pickdate/themes/default.date.css')}}
         {{HTML::style('plugins/pushy/css/pushy.css');}}
-
+        {{HTML::style('plugins/summernote/summernote.css')}}
 
         <!-- Font awesome -->
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -47,6 +47,7 @@
             {{HTML::script('plugins/pushy/js/pushy.min.js')}}
             {{HTML::script('plugins/pickdate/compressed/picker.js')}}
             {{HTML::script('plugins/pickdate/compressed/picker.date.js')}}
+            {{HTML::script('plugins/summernote/summernote.min.js')}}
             {{HTML::script('js/datepicker.js')}}
 
             @yield('js')

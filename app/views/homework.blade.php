@@ -9,7 +9,7 @@
     </div>
 
     <div class="description">
-        {{ Util\Str::enters( e($item->content) )}}
+        {{ Util\Str::comment( $item->content )}}
     </div>
 
     <div class="controls">
