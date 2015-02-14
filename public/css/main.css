@@ -5876,6 +5876,11 @@ div.navigation-bar {
     padding-right: 15px;
     text-align: center;
     font-size: 1.5em; }
+    div.navigation-bar .logo-wrap a {
+      color: white;
+      text-decoration: none; }
+      div.navigation-bar .logo-wrap a:hover, div.navigation-bar .logo-wrap a:active {
+        text-decoration: none; }
   div.navigation-bar .create-homework-wrap {
     position: relative;
     float: left;

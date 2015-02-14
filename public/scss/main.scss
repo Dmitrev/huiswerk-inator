@@ -89,6 +89,14 @@ div.navigation-bar{
     @include make-xs-column(8);
     text-align:center;
     font-size:1.5em;
+
+    a{
+      color:white;
+      text-decoration: none;
+      &:hover, &:active{
+        text-decoration: none;
+      }
+    }
   }
   .create-homework-wrap {
     @include make-xs-column(2);

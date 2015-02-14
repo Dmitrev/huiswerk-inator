@@ -37,8 +37,11 @@
     </a>
   </div>
   <div class="logo-wrap">
-    <i class="fa fa-graduation-cap"></i>
-    Huiswerk Inator
+    <a href="{{{URL::route('home')}}}">
+
+      <i class="fa fa-graduation-cap"></i>
+      Huiswerk Inator
+    </a>
   </div>
   <div class="create-homework-wrap">
     <a href="{{URL::route('create-homework')}}" class="add-btn">
