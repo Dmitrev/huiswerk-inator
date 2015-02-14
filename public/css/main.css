@@ -5932,6 +5932,10 @@ div.navigation-bar {
       #homework-container .item .arrow i {
         margin-right: .5em;
         color: lightgray; }
+    #homework-container .item.success {
+      background: #78ECA1; }
+      #homework-container .item.success i {
+        color: #1fdf63; }
 
 .homework {
   padding: 1em 0; }

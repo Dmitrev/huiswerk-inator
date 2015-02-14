@@ -7,6 +7,8 @@ $badge-color: rgb(207, 59, 59);
 $primary-color-nav: lighten( $navigation-color, 10 );
 $primary-color: #1EA076;
 
+$success-color: #78ECA1;
+
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -114,6 +116,7 @@ div.navigation-bar{
     background: white;
     border-bottom: 1px solid lightgray;
     padding:.5em 0;
+
     a{
       color: inherit;
     }
@@ -141,6 +144,13 @@ div.navigation-bar{
       i{
         margin-right: .5em;
         color:lightgray;
+      }
+    }
+
+    &.success{
+      background: $success-color;
+      i{
+        color: darken($success-color, 20);
       }
     }
   }
