@@ -1,6 +1,65 @@
 /* THEME */
 @import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
 @import "bootstrap";
+$navigation-color: #6e4895;
+$badge-color: rgb(207, 59, 59);
+
+$primary-color-nav: lighten( $navigation-color, 10 );
+$primary-color: #1EA076;
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+#container{
+  padding-top:1em;
+  padding-bottom: 1em;
+}
+
+.action-btn{
+  @extend .btn;
+  &:hover{
+    color: $navigation-color;
+  }
+
+  background-color: $primary-color-nav;
+  color:white;
+}
+
+.action-btn-block{
+  @extend .btn-block;
+  @extend .action-btn;
+}
+
+.date-badge{
+  @extend .badge;
+  @include border-radius(0);
+  padding: .5em;
+  background: $navigation-color;
+}
+
+.space{
+  margin:1em 0;
+}
+
+.primary-btn{
+  @extend .btn;
+  background-color: $primary-color;
+  color:white;
+
+  &:hover{
+    color: white;
+    background-color: darken($primary-color, 10);
+  }
+
+
+}
+
 
 nav{
   ul{
@@ -15,12 +74,12 @@ div.navigation-bar{
   padding:1em 0 1em 0;
   color:white;
   overflow:auto;
-  background: #005569;
+  background: $navigation-color;
 
   .menu-btn-wrap {
     @include make-xs-column(2);
     a.menu-btn {
-      @extend .btn, .btn-primary, .pull-left;
+      @extend .action-btn, .pull-left;
       font-size: 1.2em !important;
 
     }
@@ -34,9 +93,128 @@ div.navigation-bar{
   .create-homework-wrap {
     @include make-xs-column(2);
     a.add-btn {
-      @extend .btn, .btn-success, .pull-right;
+      @extend .action-btn, .pull-right;
       font-size: 1.2em !important;
     }
   }
+}
 
+#homework-container{
+  background:lightgray;
+
+  .item{
+    background: white;
+    border-bottom: 1px solid lightgray;
+    padding:.5em 0;
+    a{
+      color: inherit;
+    }
+    @include make-row();
+
+    .date{
+      @extend .date-badge;
+
+    }
+    .description{
+      @include make-xs-column(10);
+      word-wrap: break-word;
+      padding:1em;
+      h2{
+        margin:1em 0 .5em 0;
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+    }
+    .arrow{
+      @include make-xs-column(2);
+      font-size:2em;
+      padding:2em 0 0 0;
+      text-align: right;
+      i{
+        margin-right: .5em;
+        color:lightgray;
+      }
+    }
+  }
+}
+
+.homework{
+  padding: 1em 0;
+
+  .date-badge{
+    margin:1em 0;
+  }
+
+  .description{
+    padding:1em;
+    margin-top:1em;
+    margin-bottom: 1em;
+  }
+
+  .controls{
+    border-top: 1px solid lightgray;
+    @include make-row();
+    text-align: center;
+    padding: 1em 0;
+
+    em{
+      font-size:.8em;
+      color: gray;
+      display: block;
+      padding-top: .8em;
+    }
+
+    .done{
+      @include make-xs-column(4);
+    }
+
+    .edit{
+      @include make-xs-column(4);
+    }
+
+    .delete{
+      @include make-xs-column(4);
+    }
+
+  }
+
+  .info{
+    @include make-row();
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    border-color: lightgray;
+    padding:1em 0;
+    .author{
+      @include make-xs-column(6);
+      dl{
+        border-right: 1px solid lightgray;
+      }
+    }
+
+    .subject{
+      @include make-xs-column(6);
+    }
+  }
+}
+
+#comments{
+  textarea{
+    height:4em;
+  }
+
+  .comment-wrapper{
+    .comment-controls{
+      margin-bottom: 2em;
+      div {
+
+        a{
+          display:inline-block;
+        }
+
+        a.edit{
+          margin-right:2em;
+        }
+      }
+    }
+  }
 }

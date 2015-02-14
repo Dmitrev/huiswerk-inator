@@ -2,27 +2,27 @@
 
 @foreach( $homework as $item )
 
-        <tr @if( $item->user_done ) class="success" @endif>
-            <td>
-                <span class="label label-danger">{{$item->deadline_dayofweek}} {{$item->deadline_day}} {{$item->deadline_month}}</span>
+        <div class="item @if( $item->user_done ) success @endif">
+            <a href="{{URL::route('homework', [$item->id])}}">
 
-            </td>
-            <td>
-                <div>
-                    @if( is_object($item->subject))
-                        <span class="label label-default">{{{$item->subject->abbreviation}}}</span>
-                    @else
-                        <span class="label label-warning">?</span>
-                    @endif
-                    @if( isset($item->comments) && $item->comments->count() > 0)
-                        <span class="label label-default"><i class="fa fa-comment"></i> {{$item->comments->count()}}</span>
-                    @endif
-                    <a href="{{URL::route('homework', [$item->id])}}">
-                        @if($item->user_done) <i class="fa fa-check"></i> @endif {{{$item->title}}}
-                    </a>
 
-                </div>
-            </td>
-        </tr>
+
+                    <div class="description">
+                        <div class="date">
+
+                            {{$item->deadline_dayofweek}} {{$item->deadline_day}} {{$item->deadline_month}}
+
+                        </div>
+                        <h2 class="title">{{{$item->title}}}</h2>
+                        @if(is_object($item->subject))
+                            <em>{{{$item->subject->name}}}</em>
+                        @endif
+                    </div>
+
+                    <div class="arrow">
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+            </a>
+        </div>
     @endforeach
 @endif

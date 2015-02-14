@@ -14,7 +14,7 @@
     {{Form::hidden('homework_id', $item->id)}}
   </div>
   <div class="form-group">
-    {{Form::submit('Reactie plaatsen', ['class' => 'btn btn-primary btn-block'])}}
+    {{Form::submit('Reactie plaatsen', ['class' => 'action-btn-block'])}}
   </div>
   {{Form::close()}}
   @if(isset($comments))
@@ -32,13 +32,15 @@
         </div>
 
       </div>
+      <div class="comment-controls">
       {{-- Edit comment --}}
       @if( Auth::user()->id === $comment->user_id )
           <div>
-            <a href="{{URL::route('edit-comment', [$comment->id])}}"><i class="fa fa-pencil"></i> bewerken</a>
+            <a class="edit" href="{{URL::route('edit-comment', [$comment->id])}}"><i class="fa fa-pencil"></i> bewerken</a>
             <a href="{{URL::route('confirm-delete-comment', [$comment->id])}}"><i class="fa fa-trash"></i> verwijderen</a>
           </div>
       @endif
+    </div>
     </div>
     @endforeach
   @endif

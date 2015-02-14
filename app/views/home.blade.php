@@ -14,31 +14,21 @@
       </div>
     @endforeach
 
-    <h1>@include('common.home-heading')</h1>
     {{--<a class="btn btn-success" href="{{URL::route('add-homework')}}">Huiswerk toevoegen</a>--}}
     <div class="wrapper">
-
 
     @if( $homework->count() === 0)
       @include('common.warning', ['message' => 'Er is geen huiswerk voor deze week'])
     @else
 
-    <table class="table table">
-        <thead>
-            <tr>
-                <th class="col-xs-2">Deadline</th>
-                <th class="col-xs-10">Huiswerk / Vak</th>
-            </tr>
-        </thead>
-        <tbody id="homework-container">
+    <div id="homework-container">
             @include('common.homework-rows', ['homework' => $homework])
-        </tbody>
-    </table>
-    @endif
     </div>
+    @endif
+    <div class="space">
     @if( $homework->getCurrentPage() < $homework->getLastPage() )
         <?php $endReached = false ?>
-        <button id="load-homework" class="btn btn-primary" data-loading="Nieuwe items ophalen..">
+        <button id="load-homework" class="primary-btn" data-loading="Nieuwe items ophalen..">
             <i class="fa fa-refresh hide fa-spin"></i>
             <span>Meer huiswerk tonen</span>
         </button>
@@ -48,6 +38,7 @@
 
 
     <p @if( !$endReached) id="end-reached" class="hide" @endif >Geen items meer om te laden..</p>
+    </div>
 @stop
 
 @section('js')
