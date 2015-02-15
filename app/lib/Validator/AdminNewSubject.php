@@ -10,7 +10,6 @@ class AdminNewSubject extends Validator{
   {
     $subject = new Subject;
     $subject->name = $this->get('name');
-    $subject->abbreviation = $this->get('abbreviation');
     $subject->state = $this->get('state', 0);
     $subject->save();
   }

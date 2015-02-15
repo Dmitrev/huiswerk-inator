@@ -10,7 +10,6 @@ class AdminEditSubject extends Validator{
       return false;
 
     $this->entry->name = $this->get('name');
-    $this->entry->abbreviation = $this->get('abbreviation');
     $this->entry->state = $this->get('state', 0);
     $this->entry->save();
   }

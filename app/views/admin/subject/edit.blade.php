@@ -14,11 +14,6 @@
 </div>
 
 <div class="form-group">
-  {{Form::label('abbreviation ', 'Afkorting: ')}}
-  {{Form::text('abbreviation', Input::old('abbreviation', $subject->abbreviation), ['class' => 'form-control'])}}
-</div>
-
-<div class="form-group">
     {{Form::label('state', 'staat')}}
     {{Form::select('state', [
       0 => 'uit',

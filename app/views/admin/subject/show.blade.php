@@ -18,9 +18,6 @@
     <dt>Naam</dt>
     <dd>{{{$subject->name}}}</dd>
 
-    <dt>Afkorting</dt>
-    <dd>{{{$subject->abbreviation}}}</dd>
-
     <dt>Staat</dt>
     <dd>{{{ ($subject->state == 1) ? 'aan' : 'uit' }}}</dd>
   </dl>
