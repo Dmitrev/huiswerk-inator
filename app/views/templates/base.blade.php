@@ -29,7 +29,7 @@
         <meta name="msapplication-TileColor" content="#b91d47">
         <meta name="msapplication-TileImage" content="{{URL::asset('images/favicons/mstile-144x144.png')}}">
 
-        {{HTML::style('css/main.css?v2.0')}}
+        {{HTML::style('css/main.css?v2.0git')}}
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
