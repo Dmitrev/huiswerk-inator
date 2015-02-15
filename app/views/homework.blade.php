@@ -1,6 +1,8 @@
 @extends('templates.default')
 
 @section('content')
+
+    @include('common.back')
     <div class="homework">
     <h1>{{{$item->title}}}</h1>
 
