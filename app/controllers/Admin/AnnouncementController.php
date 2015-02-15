@@ -51,7 +51,15 @@ class AnnouncementController extends BaseController{
 
   public function update()
   {
-    $input = Input::only(['id', 'title', 'message', 'start_date_submit', 'end_date_submit']);
+    $input = Input::only([
+        'id',
+        'title',
+        'message',
+        'start_date_submit',
+        'end_date_submit',
+        'force',
+        'state'
+    ]);
     $announcement = Announcement::findOrFail($input['id']);
 
     $v = new AdminEditAnnouncement($input);

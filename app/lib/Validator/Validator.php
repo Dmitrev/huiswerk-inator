@@ -48,10 +48,10 @@ class Validator{
               && !empty($this->input[$key]);
   }
 
-  public function get($key)
+  public function get($key, $default_value = NULL)
   {
     if( !$this->has($key) )
-      return NULL;
+      return $default_value;
 
     return $this->input[$key];
   }

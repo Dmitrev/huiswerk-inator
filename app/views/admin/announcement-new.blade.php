@@ -30,6 +30,27 @@
       ])}}
     </div>
 
+  <div class="form-group">
+      <div class="row">
+          <div class="col-md-4">
+              {{Form::label('force', 'Forceer')}}
+              <p>{{Form::checkbox('force', 1, Input::old('force', null),  ['class' => 'control-label'])}}</p>
+          </div>
+
+          <div class="col-md-8">
+              {{Form::label('state', 'staat')}}
+              {{Form::select('state', [
+                0 => 'uit',
+                1 => 'aan'
+              ],
+              Input::old('state', 1),
+              ['class' => 'form-control'] )}}
+          </div>
+
+      </div>
+
+  </div>
+
     <div class="form-group">
       {{Form::submit('Plaatsen', ['class' => 'btn btn-primary'])}}
     </div>
