@@ -22,6 +22,7 @@
       <tr>
         <th>Title</th>
         <th>Vak</th>
+        <th>Staat</th>
         <th>Options</th>
       </tr>
     </thead>
@@ -32,6 +33,7 @@
         <tr>
           <td>{{$subject->id}}</td>
           <td><a href="{{URL::route('admin.subject.show', [$subject->id])}}">{{{$subject->name}}}</a></td>
+          <td>{{{ ($subject->state == 1) ? 'aan' : 'uit' }}}</td>
           <td>
             @include('common.admin-actions', [
               'prefix' => 'admin.subject',

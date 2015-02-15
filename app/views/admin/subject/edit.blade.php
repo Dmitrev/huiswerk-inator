@@ -19,6 +19,17 @@
 </div>
 
 <div class="form-group">
+    {{Form::label('state', 'staat')}}
+    {{Form::select('state', [
+      0 => 'uit',
+      1 => 'aan'
+    ],
+    Input::old('state', $subject->state),
+    ['class' => 'form-control'] )}}
+
+</div>
+
+<div class="form-group">
   {{Form::button('<i class="fa fa-save"></i> Bewerken', [
     'class' => 'btn btn-success',
     'type' => 'submit'])}}

@@ -103,6 +103,7 @@ protected $active_nav = 'subjects';
 	{
 		$subject = Subject::findOrFail($id);
 
+
 		$v = new AdminEditSubject( Input::all(), $subject );
 
 		if( $v->fails() )

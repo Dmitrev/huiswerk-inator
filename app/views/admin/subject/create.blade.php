@@ -16,6 +16,17 @@
   </div>
 
   <div class="form-group">
+      {{Form::label('state', 'staat')}}
+      {{Form::select('state', [
+        0 => 'uit',
+        1 => 'aan'
+      ],
+      Input::old('state', 1),
+      ['class' => 'form-control'] )}}
+
+  </div>
+
+  <div class="form-group">
     {{Form::button('<i class="fa fa-check"></i> Toevoegen', [
       'class' => 'btn btn-success',
       'type' => 'submit'])}}
