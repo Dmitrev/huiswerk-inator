@@ -13,14 +13,10 @@
   </div>
 
   <div class="form-group">
-    {{Form::label('start_date', 'Startdatum: ')}}
-    <p class="form-control-static">{{{$announcement->friendly_start_date}}}</p>
+    {{Form::label('start_date', 'Staat: ')}}
+    <p class="form-control-static">{{{ ($announcement->state == 1) ? 'aan' : 'uit'}}}</p>
   </div>
 
-  <div class="form-group">
-    {{Form::label('end_date', 'Einddatum: ')}}
-    <p class="form-control-static">{{{$announcement->friendly_end_date}}}</p>
-  </div>
 
   <div class="form-group">
     <a href="{{URL::route('admin-announcement.edit', [$announcement->id])}}" class="btn btn-default"><i class="fa fa-pencil"></i> bewerken</a>

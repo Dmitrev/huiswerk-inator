@@ -11,7 +11,7 @@ class HomeController extends BaseController {
 
 	private function getAnnouncements()
 	{
-		return Announcement::ofTheDay()->get();
+		return Announcement::online()->get();
 	}
 
 	public function showHomework()

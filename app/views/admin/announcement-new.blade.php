@@ -14,30 +14,7 @@
         {{Form::textarea('message', Input::old('message'), ['class' => 'form-control'])}}
     </div>
 
-    <div class="form-group">
-      {{Form::label('start_date', 'Begin datum: ')}}
-      {{Form::text('start_date', Input::old('start_date'), [
-        'class' => 'form-control datepicker',
-        'placeholder' => 'Kies de begindatum hier'
-      ])}}
-    </div>
-
-    <div class="form-group">
-      {{Form::label('end_date', 'Begin datum: ')}}
-      {{Form::text('end_date', Input::old('end_date'), [
-        'class' => 'form-control datepicker',
-        'placeholder' => 'Kies de einddatum hier'
-      ])}}
-    </div>
-
   <div class="form-group">
-      <div class="row">
-          <div class="col-md-4">
-              {{Form::label('force', 'Forceer')}}
-              <p>{{Form::checkbox('force', 1, Input::old('force', null),  ['class' => 'control-label'])}}</p>
-          </div>
-
-          <div class="col-md-8">
               {{Form::label('state', 'staat')}}
               {{Form::select('state', [
                 0 => 'uit',
@@ -45,9 +22,6 @@
               ],
               Input::old('state', 1),
               ['class' => 'form-control'] )}}
-          </div>
-
-      </div>
 
   </div>
 

@@ -7,7 +7,7 @@ class DashboardController extends BaseController{
   public function view()
   {
 
-    $announcements = Announcement::getList()->paginate(15);
+    $announcements = Announcement::paginate(15);
 
     return View::make('admin.dashboard')
       ->with('title', 'Admin Dashboard')
