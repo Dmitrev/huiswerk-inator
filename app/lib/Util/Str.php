@@ -49,7 +49,7 @@ class Str {
     }
 
     public static function comment( $string ){
-        return strip_tags($string, '<p><span><br><ul><li><ol>');
+        return strip_tags($string, "<img><p><span><br><ul><li><ol>");
     }
 
     public function dayOfWeek($short = true)

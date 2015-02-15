@@ -17,6 +17,22 @@ $success-color: #78ECA1;
   border-radius: $radius;
 }
 
+/* Fix Modal backdrop getting on top of modal, with image uploader summernote */
+.modal-backdrop{
+  display:none;
+}
+
+.note-editor {
+  @include border-radius(5px);
+
+  .btn-toolbar {
+    /* Fix wrong position toolbar summernote */
+    margin-left: 0px;
+    @include border-radius(5px);
+  }
+
+}
+
 
 #container{
   padding-top:1em;
@@ -129,6 +145,7 @@ div.navigation-bar{
     .description{
       @include make-xs-column(10);
       word-wrap: break-word;
+
       padding:1em;
       h2{
         margin:1em 0 .5em 0;
@@ -167,6 +184,7 @@ div.navigation-bar{
     padding:1em;
     margin-top:1em;
     margin-bottom: 1em;
+    overflow: auto;
   }
 
   .controls{

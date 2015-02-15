@@ -5820,6 +5820,23 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+/* Fix Modal backdrop getting on top of modal, with image uploader summernote */
+.modal-backdrop {
+  display: none; }
+
+.note-editor {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  .note-editor .btn-toolbar {
+    /* Fix wrong position toolbar summernote */
+    margin-left: 0px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px; }
+
 #container {
   padding-top: 1em;
   padding-bottom: 1em; }
@@ -5944,7 +5961,8 @@ div.navigation-bar {
   .homework .description {
     padding: 1em;
     margin-top: 1em;
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    overflow: auto; }
   .homework .controls {
     border-top: 1px solid lightgray;
     margin-left: -15px;

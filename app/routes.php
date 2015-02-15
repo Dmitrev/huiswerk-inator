@@ -125,6 +125,11 @@ Route::group( ['before' => 'auth'] , function(){
 		'uses' => 'AnnouncementsController@view'
 	]);
 
+    Route::post('image-upload', [
+        'as' => 'image-upload',
+        'uses' => 'UploadController@upload'
+    ]);
+
 });
 
 Route::group( ['before' => 'guest'] , function(){
@@ -179,6 +184,8 @@ Route::group( ['before' => 'guest'] , function(){
 		'as' => 'submit-change-password',
 		'uses' => 'PasswordResetController@submitNewPassword'
 	]);
+
+
 
 });
 
