@@ -87,6 +87,12 @@ class Homework extends Model {
        ;
     }
 
+    public function scopeGetAdminList( $query ){
+        return $query->with('subject')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(15);
+    }
+
     public function done()
     {
       return $this->hasMany('HomeworkDone', 'homework_id', 'id');

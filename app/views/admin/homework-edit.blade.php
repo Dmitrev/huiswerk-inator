@@ -21,7 +21,7 @@
 
     <div class="form-group">
       {{Form::label('content', 'Beschrijving: (Raak veld aan om te kiezen )')}}
-      {{Form::textarea('content', Input::old('content', $homework->content), ['class' => 'form-control'])}}
+      {{Form::textarea('content', Input::old('content', $homework->content), ['id' => 'summernote', 'class' => 'form-control'])}}
     </div>
 
     <div class="form-group">
@@ -37,4 +37,8 @@
       {{Form::button('<i class="fa fa-save"></i> Wijzigingen opslaan', ['type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block'])}}
     </div>
   {{Form::close()}}
+@stop
+
+@section('js')
+    {{HTML::script('js/editor.js')}}
 @stop

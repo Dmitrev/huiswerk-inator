@@ -6,7 +6,7 @@ class HomeworkController extends BaseController{
   public function view()
   {
 
-    $homework = Homework::getList();
+    $homework = Homework::getAdminList();
     return View::make('admin.homework-view')
       ->with('title', 'Alle Huiswerk items')
       ->with('homework', $homework);

@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             {{Form::label('content', 'Beschrijving: ')}}
-            {{Form::textarea('content', Input::old('content', $homework->content), ['class' => 'form-control', 'placeholder' => 'content'])}}
+            {{Form::textarea('content', Input::old('content', $homework->content), ['id' => 'summernote', 'class' => 'form-control', 'placeholder' => 'content'])}}
         </div>
         <div class="form-group">
             {{Form::label('deadline', 'Deadline: ')}}
@@ -32,4 +32,8 @@
             {{Form::submit('Opslaan', ['class' => 'btn btn-success'])}}
         </div>
     {{Form::close()}}
+@stop
+
+@section('js')
+    {{HTML::script('js/editor.js')}}
 @stop
