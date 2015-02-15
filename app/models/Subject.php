@@ -12,6 +12,7 @@ class Subject extends Model {
     {
       return $query
               ->orderd()
+                ->where('state', '=', 1)
               ->lists('name', 'id');
     }
 }
